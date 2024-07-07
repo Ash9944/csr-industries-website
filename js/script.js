@@ -301,14 +301,14 @@ function updateSlide() {
     slide.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 }
 
-nextButton.addEventListener('click', () => {
-    move();
-});
+// nextButton.addEventListener('click', () => {
+//     move();
+// });
 
-prevButton.addEventListener('click', () => {
-    lmove();
-});
+// prevButton.addEventListener('click', () => {
+//     lmove();
+// });
 
-window.addEventListener('resize', updateSlide);
+// window.addEventListener('resize', updateSlide);
 
 setInterval(function () { move(); }, 15000);

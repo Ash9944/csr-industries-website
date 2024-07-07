@@ -492,10 +492,12 @@
     background: #2C3E50;
     background: -webkit-linear-gradient(to left, #2C3E50, #4CA1AF);
     background: linear-gradient(to left, #2C3E50, #4CA1AF);
+    height: 100%;
+    margin-bottom: 23px;
 }
 
 .faq .slide {
-    width: 1000px;
+    width: 100%;
     height: 200px;
     position: absolute;
     left: 50%;
@@ -513,7 +515,7 @@
 }
 
 .faq .slide ul li {
-    width: 1000px;
+    width: 100%;
     height: 200px;
     color: #0888a3;
     align-items: center;
