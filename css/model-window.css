@@ -1,0 +1,538 @@
+/*************************Morphing Model Window***************************/
+
+/* ===================================
+    Modal window css
+====================================== */
+
+.modal-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #5856569c;
+    z-index: 11111;
+    display: none;
+    overflow-y: scroll;
+    height: 100vh;
+    transition: .5s ease;
+}
+
+.morphic-body {
+    padding: 5% 0;
+}
+
+.modal-view {
+    display: block;
+}
+
+.modal-body {
+    max-width: 1200px;
+    margin: 25px auto;
+    background-color: #171717;
+    height: auto;
+    opacity: 1;
+    display: block;
+    animation: .8s fadeIn;
+}
+
+.morphic-title {
+    padding: 10px;
+    padding-left: 20px;
+    font-family: 'Oswald', sans-serif;
+    color: #FFFFFF;
+}
+
+.morphic-title h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: capitalize;
+
+}
+
+.morphic-title h5 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.morphic-title p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #ffffff;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    line-height: 1.7;
+}
+
+.left-arrow-sec a,
+.right-arrow-sec a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: solid 1px #ffffff;
+    text-align: center;
+    margin-top: 5px;
+    transition: .8s ease;
+    cursor: pointer;
+}
+
+.left-arrow-sec a i,
+.right-arrow-sec a i {
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 9px;
+    transition: .8s ease;
+}
+
+.left-arrow-sec a:hover,
+.right-arrow-sec a:hover {
+    border: solid 1px #c42629;
+    background-color: #c42629;
+    animation: 1s tada;
+}
+
+.left-arrow-sec a:hover i,
+.right-arrow-sec a:hover i {
+    color: #ffffff;
+}
+
+.morphic-body img {
+    height: 100%;
+    width: 100%;
+}
+
+.morphic-detail h4 {
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #FFFFFF;
+    margin-bottom: 3%;
+    margin-top: 2%;
+}
+
+.morphic-detail p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    font-weight: 300;
+}
+
+.morphic-info {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.morphic-info .info {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+}
+
+.morphic-info span {
+    color: #FFFFFF;
+    margin-right: 4px;
+}
+
+.close-modal {
+    z-index: 111111;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.close-modal i {
+    display: inline-block;
+    height: 2px;
+    width: 25px;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    transition: .5s ease;
+}
+
+.close-modal:hover i {
+    background-color: #ed2d34;
+}
+
+.close-modal i:first-child {
+    transform: rotate(45deg);
+    margin-left: 4px;
+}
+
+.close-modal i:last-child {
+    transform: rotate(-45deg);
+    margin-left: -24px;
+}
+
+.carousel-indicators {
+    position: relative;
+    margin-bottom: 2% !important;
+    margin-top: 6% !important;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.carousel-indicators li {
+    height: auto !important;
+    width: auto !important;
+    border-radius: 50%;
+    margin-right: 15px;
+    background: transparent;
+}
+
+.left-arrow-sec {
+    display: flex !important;
+    justify-content: space-around;
+    padding: 0 8px;
+}
+
+.right-arrow-sec {
+    display: flex !important;
+    justify-content: space-around;
+    padding: 0 8px;
+}
+
+.btn {
+    -webkit-appearance: initial;
+    overflow: hidden;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 2;
+    display: inline-block;
+    font-size: 17px;
+    border: 2px solid transparent;
+    letter-spacing: .5px;
+    line-height: inherit;
+    border-radius: 0;
+    text-transform: capitalize;
+    width: auto;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease !important;
+    transition: all .5s ease !important;
+}
+
+/*Slightly desaturated orange btn*/
+.black-btn {
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 25px;
+    color: #FFFFFF;
+    font-weight: 600;
+    background-color: transparent;
+    border: 2px solid #FFFFFF;
+    border-radius: 0px;
+    -webkit-transition: .8s ease !important;
+    -o-transition: .8s ease !important;
+    transition: .8s ease !important;
+}
+
+.black-btn:hover {
+    color: black;
+    ;
+    background-color: #FFFFFF !important;
+}
+
+
+/*************************Morphing Model Window end***************************/
+
+/*Model Quantity*/
+
+.input_plus_mins .qty .count {
+    color: #ffffff;
+    background: transparent;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 18px;
+    font-weight: 300;
+    /*line-height: 30px;*/
+    padding: 0 2px;
+    min-width: 35px;
+    text-align: center;
+    margin-bottom: 0;
+    font-family: Roboto, sans-serif;
+}
+
+.input_plus_mins .qty .plus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: center;
+    color: #ffffff;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    position: relative;
+    background-color: transparent !important;
+}
+
+.input_plus_mins .qty .plus i {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+}
+
+.input_plus_mins .qty .minus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: center;
+    color: #ffffff;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    background-clip: padding-box;
+    position: relative;
+    background-color: transparent !important;
+}
+
+.input_plus_mins .qty .minus i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+}
+
+/*Prevent text selection*/
+.input_plus_mins span {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.input_plus_mins input {
+    border: 0;
+    width: 2%;
+}
+
+.input_plus_mins nput::-webkit-outer-spin-button,
+.input_plus_mins input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input_plus_mins input:disabled {
+    background-color: white;
+}
+
+/*Model Size Chooser*/
+
+.size__item {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.size__item a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #ffffff;
+    opacity: .5;
+    display: inline;
+}
+
+.size__item a {
+    margin-right: 25px;
+}
+
+.price-modal h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 25px 0;
+}
+
+.modal-btn .btn.btn-medium {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.shoes-list {
+    padding-top: 100px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.wrapper .outer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper .card {
+    background: #fff;
+    width: 430px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    justify-content: space-between;
+    border-radius: 100px 20px 20px 100px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    animation: animate 15s linear infinite;
+    animation-delay: calc(3s * var(--delay));
+}
+
+.outer:hover .card {
+    animation-play-state: paused;
+}
+
+.wrapper .card:last-child {
+    animation-delay: calc(-3s * var(--delay));
+}
+
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: translateY(100%) scale(0.5);
+    }
+
+    5%,
+    20% {
+        opacity: 0.4;
+        transform: translateY(100%) scale(0.7);
+    }
+
+    25%,
+    40% {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0%) scale(1);
+    }
+
+    45%,
+    60% {
+        opacity: 0.4;
+        transform: translateY(-100%) scale(0.7);
+    }
+
+    65%,
+    100% {
+        opacity: 0;
+        transform: translateY(-100%) scale(0.5);
+    }
+}
+
+.card .content {
+    display: flex;
+    align-items: center;
+}
+
+.wrapper .card .img {
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    left: -5px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card .img img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card .details {
+    margin-left: 80px;
+}
+
+.details span {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.card a {
+    text-decoration: none;
+    padding: 7px 18px;
+    border-radius: 25px;
+    color: #fff;
+    background: linear-gradient(to bottom, #bea2e7 0%, #86b7e7 100%);
+    transition: all 0.3s ease;
+}
+
+.card a:hover {
+    transform: scale(0.94);
+}
+
+.faq .wrapper {
+    position: absolute;
+    width: 100%;
+    background: #2C3E50;
+    background: -webkit-linear-gradient(to left, #2C3E50, #4CA1AF);
+    background: linear-gradient(to left, #2C3E50, #4CA1AF);
+}
+
+.faq .slide {
+    width: 1000px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.faq .slide ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+}
+
+.faq .slide ul li {
+    width: 1000px;
+    height: 200px;
+    color: #0888a3;
+    align-items: center;
+    justify-content: center;
+}
+
+.faq .button-container {
+    text-align: center;
+    margin-top: 90px;
+}
+.faq .button {
+    background: #1E90FF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+}
+.faq .button:hover {
+    background: #3742fa;
+}
