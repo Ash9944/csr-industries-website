@@ -63,8 +63,12 @@ section {padding: 7.5rem 0}
 a{text-decoration: none;}
 
 .ui-element.bg-light-gray {
-    background-color: #f6f6f6;
+
+    background-color: #1b1b1b;
     padding-bottom: 3rem;
+    background-size: cover;
+    background-position: top center;
+    backdrop-filter: blur(100px);
 }
 
 .ui-element .main-title {
@@ -76,7 +80,7 @@ a{text-decoration: none;}
 .ui-element .main-title h2 {
     text-transform: capitalize;
     font-weight: 300;
-    color: #484b59;
+    color: #c3c5cf;
     font-size: 3rem;
     line-height: 1.4;
     max-width: 650px;
@@ -97,7 +101,7 @@ a{text-decoration: none;}
     text-transform: capitalize;
     font-weight: 800;
     line-height: 1;
-    font-family: "Poppins", sans-serif;
+    font-family: "Mantrope", sans-serif;
     opacity: .03;
     position: absolute;
     top: -7%;
@@ -115,6 +119,7 @@ a{text-decoration: none;}
     font-size: 120px;
     font-weight: 700;
     margin-bottom: 0;
+    color: wheat;
 }
 
 .ui-element .main-title h1 sup {
@@ -264,7 +269,7 @@ a{text-decoration: none;}
 }
 
 .mega-elements .transparent-bg.fixed-menu .menu_bars span, .mega-elements .fixed-menu .menu-outer.menu_bars span, .mega-elements .fixed-menu.just-menu .menu_bars span, .mega-elements .just-menu.black .menu_bars span {
-    background: #18191d;
+    background: wheat;
 }
 
 .mega-elements .menu_bars, .mega-elements .menu_bars span, .mega-elements .menu_bars2, .mega-elements .menu_bars2 span{
@@ -314,6 +319,7 @@ a{text-decoration: none;}
 
 /* nav top default */
 .mega-elements .navbar-top-default{
+    background-color: black !important;
     position: absolute;
     top: 0;
     z-index: 99;
@@ -331,6 +337,7 @@ a{text-decoration: none;}
 }
 
 .mega-elements .navbar-top-default .navbar-nav .nav-link {
+    
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
     color: #ffffff;
@@ -394,7 +401,7 @@ a{text-decoration: none;}
 }
 
 .mega-elements .fixed-menu.navbar-top-default .navbar-nav .nav-link:hover, .mega-elements .fixed-menu.navbar-top-default .navbar-nav .nav-link.active {
-    color: #24c1dd;
+    color: wheat;
 }
 
 /* fixed black nav */
@@ -535,7 +542,7 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
     position: fixed;
     right: 0;
     top: 0;
-    background: #24c1dd;
+    background: #00090a;
     z-index: 1032;
     height: 100%;
     -webkit-transform: translate3d(100%, 0, 0);
@@ -682,6 +689,7 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
 
 .mega-elements .side-menu.side-menu-active .side-nav .navbar-nav .nav-link {
     opacity: 1;
+    color: wheat !important;
 }
 
 .mega-elements .side-nav .navbar-nav .nav-link {
@@ -705,6 +713,7 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
     font-size: 13px;
     margin-top: .5rem;
     margin-bottom: 0;
+    color: wheat !important;
 }
 
 .mega-elements .social-icons-simple{
@@ -1448,16 +1457,17 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
     bottom: 2%;
     left: 54%;
     transform: translateX(-50%);
-    background-color: #d43030;
+    background-color: wheat;
 }
 
 .ui-block-02.about .about-heading .text-small{
     font-size: 20px;
+    color: wheat;
 }
 
 .ui-block-02.about .about-heading .heading{
     font-size: 48px;
-    color: #ffffff;
+    color: wheat;
     font-weight: bold;
 }
 
@@ -1545,7 +1555,7 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
 .ui-block-02.about .btn.btn-rounded {border-radius: 50px;}
 .ui-block-02.about .btn.btn-medium {font-size:16px; padding: 14px 46px; line-height: 1.8em}
 .ui-block-02.about .btn.btn-trans-white {background: transparent; border-color: #ffffff; color: #ffffff}
-.ui-block-02.about .btn.btn-trans-white:hover {background: #ffffff !important; border-color: #ffffff; color: #202020 !important}
+.ui-block-02.about .btn.btn-trans-white:hover {background: wheat !important; border-color: #ffffff; color: #202020 !important}
 .ui-block-02.about .btn {-webkit-appearance: initial; overflow: hidden;position: -webkit-sticky;position: sticky; z-index: 2; display:inline-block; font-size: 12px; border:2px solid transparent; letter-spacing: .5px; line-height: inherit; border-radius: 0; text-transform:capitalize; width: auto;font-family: 'Montserrat', sans-serif; font-weight: bold; -webkit-transition: all .5s ease;-o-transition: all .5s ease !important;transition: all .5s ease !important;}
 
 @media screen and (max-width: 991px) and (min-width: 768px) {
@@ -24318,7 +24328,7 @@ section.ui-block-25 {
      UI-Block-13
 ==================================== */
 .ui-block-13.testimonial-sec.parallax-img {
-    background-image: url("../img/elements-img/testimonial-img/ui-block-13-bg-testimonial.jpg");
+    background-image: url("../../images/contact_bg.jpg");
     background-repeat: no-repeat;
     padding: 4rem 0;
     position: relative;
@@ -24327,6 +24337,7 @@ section.ui-block-25 {
     height: 100%;
     background-position: center center;
     overflow: hidden;
+    margin : -36px 0;
 }
 
 .ui-block-13.testimonial-sec .testimonial-img img {

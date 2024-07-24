@@ -607,6 +607,7 @@ section {
     padding-bottom: 0;
     padding-top: 0;
     z-index: 9;
+    
 }
 
 .center-brand {
@@ -1415,7 +1416,7 @@ section {
 ====================================== */
 
 .slider-area {
-    background-image: url("../images/banner.jpg");
+    background-image: url("../images/contact_bg.jpg");
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1649,7 +1650,7 @@ section {
 }
 
 .faq {
-    background-image: url("../images/products_bg.jpg");
+    background-image: url("../images/contact_bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -1843,7 +1844,7 @@ section {
 ====================================== */
 
 .contact-sec {
-    background-image: url("../images/contact_bg.jpg");
+    background-image: url("../images/testimonial_bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -2786,3 +2787,4 @@ section {
     }
 
 }
+
