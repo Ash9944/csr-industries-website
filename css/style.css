@@ -2584,6 +2584,7 @@ section {
     /* Banner */
     .slider-area h1 {
         font-size: 34px;
+        margin-top: 100px;
     }
 
     .slider-area p {
