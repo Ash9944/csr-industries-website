@@ -58,6 +58,20 @@ $(function () {
     });
 });
 
+$(function () {
+    // Scroll Event
+    $(window).on('scroll', function () {
+        var scrolled = $(window).scrollTop();
+        if (scrolled > 600) $('.go-tops').addClass('active');
+        if (scrolled < 600) $('.go-tops').removeClass('active');
+    });
+    // Click Event
+    $('.go-tops').on('click', function () {
+        // $("html, body").animate({ scrollTop: "0" }, 500);
+        window.open('pamplet.pdf', '_blank');
+    });
+});
+
 /* Hide Menu on Mobile Click */
 
 $(".navbar-nav>li>a").on("click", function () {
