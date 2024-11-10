@@ -2099,7 +2099,7 @@ section {
     position: relative;
     text-align: center;
     padding: 200px 0 150px 0;
-    background: url("../images/CSR_bg.jpg");
+    background: url("../imgs/CSR_bg.png");
     background-size: cover;
     background-position: top center;
 }
@@ -2916,6 +2916,12 @@ section {
 }
 @media (min-width: 768px) {
     .pb-md-4{
-        margin-left: 10px;
+        margin-right: 130px !important;
     }
+}
+
+
+.pb-md-4 {
+    justify-content: center;
+    align-items: center;
 }
