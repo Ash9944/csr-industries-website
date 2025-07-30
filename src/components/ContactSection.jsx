@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, MapPin, Mail, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 // Contact Section
 const ContactSection = () => {
@@ -18,10 +19,17 @@ const ContactSection = () => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Form submitted:', formData);
-        alert('Thank you for your inquiry! We will get back to you soon.');
-        setFormData({ name: '', phone: '', email: '', message: '' });
+        try {
+            e.preventDefault();
+            console.log('Form submitted:', formData);
+            toast.success('Thank you for your inquiry! We will get back to you soon.');
+            setFormData({ name: '', phone: '', email: '', message: '' });
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            toast.error('Failed to submit form. Please try again later.');
+            return;
+
+        }
     };
 
     return (

@@ -10,16 +10,17 @@ import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
     <div className="min-h-screen bg-gray-900">
-      <SEOHead 
+      <SEOHead
         title="CSR Industries | Best Pumps in Coimbatore - Motor Pump Manufacturers Since 1986"
         description="Leading motor pump manufacturers in Coimbatore since 1986. Premium water pump motors, submersible pumps, self-priming pumps, and industrial pumping solutions. Quality guaranteed."
         keywords="motor pump manufacturers coimbatore, water pump motors, submersible pumps, self priming pumps, industrial pumps, pump manufacturers tamil nadu, CSR Industries, Shelby pumps"
       />
-      
+
       <Header />
       <HeroSection />
       <ProductsSection />
@@ -30,7 +31,7 @@ const App = () => {
       <ContactSection />
       <Footer />
       <ScrollToTop />
-      
+      <Toaster position="bottom-center" reverseOrder={false} toastOptions={{ duration: 5000 }} />
       <style jsx>{`
         @keyframes fadeInLeft {
           from {
