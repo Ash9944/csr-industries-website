@@ -1,9 +1,8 @@
-import React,{ useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // FAQ Section
 const FAQSection = () => {
     const [currentFAQ, setCurrentFAQ] = useState(0);
-
     const faqs = [
         {
             question: "Which motor pump is best for home usage?",
@@ -26,6 +25,13 @@ const FAQSection = () => {
             answer: "By choosing Shelby water pumps from CSR Industries, you benefit from superior quality, efficiency, and durability at the most competitive prices in Coimbatore."
         }
     ];
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentFAQ((prev) => (prev + 1) % faqs.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [faqs.length]);
 
     return (
         <section id="faq" className="py-20 bg-gray-900">

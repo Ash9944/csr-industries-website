@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
 
 // Products Section
 const ProductsSection = () => {
     const [currentProduct, setCurrentProduct] = useState(0);
-
     const products = [
         {
             id: 1,
@@ -79,6 +78,13 @@ const ProductsSection = () => {
             ]
         }
     ];
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentProduct((prev) => (prev + 1) % products.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [products.length]);
 
     const nextProduct = () => {
         setCurrentProduct((prev) => (prev + 1) % products.length);
