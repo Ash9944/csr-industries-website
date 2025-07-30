@@ -91,7 +91,7 @@ const ContactSection = () => {
                                     <MapPin className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
                                     <div>
                                         <p className="font-semibold">Store Location</p>
-                                        <p className="text-gray-300">Rajagopal Layout, Krishnarayapuram, Illango Nagar, Coimbatore, Tamil Nadu 641006</p>
+                                        <a className="text-gray-300" href="https://maps.app.goo.gl/H9F4LxR1kstJYz46A" target="_blank" rel="noopener noreferrer">Rajagopal Layout, Krishnarayapuram, Illango Nagar, Coimbatore, Tamil Nadu 641006</a>
                                     </div>
                                 </div>
                                 <div className="flex items-center space-x-4">

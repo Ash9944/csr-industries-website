@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
 
 // Products Section
@@ -88,11 +88,11 @@ const ProductsSection = () => {
                     </p>
                 </div>
 
-                <div className="relative max-w-6xl mx-auto">
+                <div className="relative max-w-7xl mx-auto">
                     <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-sm border border-gray-600/30">
                         <div className="grid lg:grid-cols-2 gap-8 p-8">
                             <div className="relative">
-                                <div className="w-full rounded-2xl overflow-hidden shadow-lg">
+                                <div className="aspect-square rounded-2xl overflow-hidden shadow-lg">
                                     <img
                                         src={products[currentProduct].image}
                                         alt={`${products[currentProduct].name} - CSR Industries Premium Quality`}
@@ -106,8 +106,8 @@ const ProductsSection = () => {
                                 <div className="space-y-3">
                                     {products[currentProduct].features.map((feature, index) => (
                                         <div key={index} className="flex items-center space-x-3">
-                                            <CheckCircle className="w-5 h-5 text-green-400" />
-                                            <span className="text-gray-300">{feature}</span>
+                                            <CheckCircle className="w-6 h-5 text-green-400" />
+                                            <span className="text-xl text-gray-200">{feature}</span>
                                         </div>
                                     ))}
                                 </div>
