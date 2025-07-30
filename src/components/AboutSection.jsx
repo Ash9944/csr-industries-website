@@ -1,0 +1,46 @@
+import React from 'react';
+// About Section
+const AboutSection = () => {
+    return (
+        <section id="about" className="py-20 bg-gray-900">
+            <div className="container mx-auto px-4">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="text-white space-y-6">
+                        <h2 className="text-4xl lg:text-5xl font-bold">
+                            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-red-400">CSR Industries</span>
+                        </h2>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                            As one of the top pump manufacturers in Coimbatore, CSR Industries has a rich legacy dating back to 1986.
+                            Our expertise in precision-engineered components for pump motors is unmatched.
+                        </p>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                            Under Sebastian's innovative leadership, every stator coil and rotor shaft meets the highest standards
+                            of excellence, driving client success and advancing the industry.
+                        </p>
+                        <div className="grid grid-cols-2 gap-6 mt-8">
+                            <div className="bg-gradient-to-br from-blue-500/20 to-transparent p-6 rounded-2xl border border-blue-500/30">
+                                <h4 className="text-xl font-bold mb-2">Quality Assured</h4>
+                                <p className="text-gray-400">Rigorous testing ensures every product meets our high standards</p>
+                            </div>
+                            <div className="bg-gradient-to-br from-red-500/20 to-transparent p-6 rounded-2xl border border-red-500/30">
+                                <h4 className="text-xl font-bold mb-2">Expert Support</h4>
+                                <p className="text-gray-400">Professional guidance to help you make the right choice</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative">
+                        <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                            <img
+                                src="imgs/standalone1.png"
+                                alt="CSR Industries Manufacturing Excellence - Top Pump Manufacturers in Coimbatore"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default AboutSection;
