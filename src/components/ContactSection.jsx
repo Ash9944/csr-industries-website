@@ -11,7 +11,7 @@ const ContactSection = () => {
         email: '',
         message: ''
     });
-
+    const [state, setState] = useState(false);
     // const [state, handleSubmit] = useForm("xldlleyv");
 
     // useEffect(() => {
@@ -30,9 +30,10 @@ const ContactSection = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setState(true);
         emailjs.send(
-            "service_sq3tu3q", 
-            "template_18ictaf", 
+            "service_sq3tu3q",
+            "template_18ictaf",
             {
                 name: formData.name,
                 message: formData.message,
@@ -40,14 +41,14 @@ const ContactSection = () => {
                 phone: formData.phone
             },
             "ZCKANvzqENSf-ja9x" // ⛔ REQUIRED: Replace with your EmailJS User ID or Public Key
-        )
-            .then((response) => {
-                toast.success('Thank you for your inquiry! We will get back to you soon.');
-                setFormData({ name: '', phone: '', email: '', message: '' });
-            })
-            .catch((err) => {
-                toast.error('Failed to submit form. Please try again later.');
-            });
+        ).then((response) => {
+            toast.success('Thank you for your inquiry! We will get back to you soon.');
+            setFormData({ name: '', phone: '', email: '', message: '' });
+            setState(false);
+        }).catch((err) => {
+            toast.error('Failed to submit form. Please try again later.');
+            setState(false);
+        });
     };
 
     return (
@@ -91,7 +92,7 @@ const ContactSection = () => {
                                 required
                                 className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                             />
-                
+
                             <textarea
                                 name="message"
                                 placeholder="Your Message"
@@ -101,12 +102,37 @@ const ContactSection = () => {
                                 required
                                 className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors resize-vertical"
                             />
-                    
+
                             <button
                                 type="submit"
-                                className="w-full bg-gradient-to-r from-blue-500 to-red-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                                disabled={state}
+                                className={`w-full flex items-center justify-center bg-gradient-to-r from-blue-500 to-red-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${state ? "opacity-70 cursor-not-allowed" : ""
+                                    }`}
                             >
-                                Send Message
+                                {state ? (
+                                    <svg
+                                        className="animate-spin h-5 w-5 text-white"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <circle
+                                            className="opacity-25"
+                                            cx="12"
+                                            cy="12"
+                                            r="10"
+                                            stroke="currentColor"
+                                            strokeWidth="4"
+                                        />
+                                        <path
+                                            className="opacity-75"
+                                            fill="currentColor"
+                                            d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z"
+                                        />
+                                    </svg>
+                                ) : (
+                                    "Send Message"
+                                )}
                             </button>
                         </form>
                     </div>

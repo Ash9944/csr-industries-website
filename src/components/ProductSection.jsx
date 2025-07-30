@@ -100,7 +100,7 @@ const ProductsSection = () => {
                     </p>
                 </div>
 
-                <div className="relative max-w-7xl mx-auto">
+                <div className="relative max-w-6xl mx-auto">
                     <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-sm border border-gray-600/30">
                         <div className="grid lg:grid-cols-2 gap-8 p-8">
                             <div className="relative">
