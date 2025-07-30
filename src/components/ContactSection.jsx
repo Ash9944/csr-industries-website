@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Phone, MapPin, Mail, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useForm, ValidationError } from '@formspree/react';
 import emailjs from "emailjs-com";
 
 // Contact Section
