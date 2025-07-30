@@ -9,7 +9,7 @@ const ProductsSection = () => {
         {
             id: 1,
             name: "Self Priming Monoblock Pump",
-            image: "imgs/selfPriming1.png",
+            image: "imgs/selfPriming.jpeg",
             features: [
                 "Heavy Duty Motor",
                 "High Head & High Discharge",
@@ -21,7 +21,7 @@ const ProductsSection = () => {
         {
             id: 2,
             name: "Openwell Submersible Pump",
-            image: "imgs/openwell1.png",
+            image: "imgs/openwellSubmersible.jpeg",
             features: [
                 "High Head & High Discharge",
                 "Continuous Heavy Duty Motor",
@@ -33,7 +33,7 @@ const ProductsSection = () => {
         {
             id: 3,
             name: "Borewell Submersible Pump",
-            image: "imgs/borewell1.png",
+            image: "imgs/borewellSubmersible.jpeg",
             features: [
                 "Stainless Steel V4 Design",
                 "Enhanced Performance",
@@ -45,7 +45,7 @@ const ProductsSection = () => {
         {
             id: 4,
             name: "V-Type Self Priming Pump",
-            image: "imgs/v type.png",
+            image: "imgs/VtypePump.jpeg",
             features: [
                 "Heavy Duty Motor",
                 "High Head & High Discharge",
@@ -57,13 +57,25 @@ const ProductsSection = () => {
         {
             id: 5,
             name: "Centrifugal Monoblock Pump",
-            image: "imgs/centrifugal1.png",
+            image: "imgs/centrifugal.jpeg",
             features: [
                 "Aluminum Impellers",
                 "Powder-Coated Body",
                 "High Reliability",
                 "Carbon Mechanical Seal",
                 "Efficient Performance"
+            ]
+        },
+        {
+            id: 6,
+            name: "DMS Slow Speed Pump",
+            image: "imgs/DMSSlowSpeed.jpeg",
+            features: [
+                "Heavy duty motor",
+                "High head & high discharge ",
+                "Brass forged impeller",
+                "Extreme suction performer",
+                "Voltage variation tolerance"
             ]
         }
     ];

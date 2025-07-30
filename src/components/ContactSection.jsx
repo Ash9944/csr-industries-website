@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Phone, MapPin, Mail, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { useForm, ValidationError } from '@formspree/react';
+import emailjs from "emailjs-com";
 
 // Contact Section
 const ContactSection = () => {
@@ -11,6 +13,15 @@ const ContactSection = () => {
         message: ''
     });
 
+    // const [state, handleSubmit] = useForm("xldlleyv");
+
+    // useEffect(() => {
+    //     if (state.succeeded) {
+    //         toast.success('Thank you for your inquiry! We will get back to you soon.');
+    //         setFormData({ name: '', phone: '', email: '', message: '' });
+    //     }
+    // }, [state.succeeded])
+
     const handleInputChange = (e) => {
         setFormData({
             ...formData,
@@ -19,17 +30,25 @@ const ContactSection = () => {
     };
 
     const handleSubmit = (e) => {
-        try {
-            e.preventDefault();
-            console.log('Form submitted:', formData);
-            toast.success('Thank you for your inquiry! We will get back to you soon.');
-            setFormData({ name: '', phone: '', email: '', message: '' });
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            toast.error('Failed to submit form. Please try again later.');
-            return;
-
-        }
+        e.preventDefault();
+        emailjs.send(
+            "service_sq3tu3q", 
+            "template_18ictaf", 
+            {
+                name: formData.name,
+                message: formData.message,
+                email: formData.email,
+                phone: formData.phone
+            },
+            "ZCKANvzqENSf-ja9x" // ⛔ REQUIRED: Replace with your EmailJS User ID or Public Key
+        )
+            .then((response) => {
+                toast.success('Thank you for your inquiry! We will get back to you soon.');
+                setFormData({ name: '', phone: '', email: '', message: '' });
+            })
+            .catch((err) => {
+                toast.error('Failed to submit form. Please try again later.');
+            });
     };
 
     return (
@@ -73,6 +92,7 @@ const ContactSection = () => {
                                 required
                                 className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                             />
+                
                             <textarea
                                 name="message"
                                 placeholder="Your Message"
@@ -82,6 +102,7 @@ const ContactSection = () => {
                                 required
                                 className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors resize-vertical"
                             />
+                    
                             <button
                                 type="submit"
                                 className="w-full bg-gradient-to-r from-blue-500 to-red-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"

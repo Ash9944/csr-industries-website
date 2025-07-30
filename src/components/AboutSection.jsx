@@ -31,7 +31,7 @@ const AboutSection = () => {
                     <div className="relative">
                         <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
                             <img
-                                src="imgs/standalone1.png"
+                                src="imgs/aboutCsrImage.jpeg"
                                 alt="CSR Industries Manufacturing Excellence - Top Pump Manufacturers in Coimbatore"
                                 className="w-full h-full object-cover"
                             />
