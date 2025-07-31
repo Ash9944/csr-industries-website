@@ -1,90 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
+import { products } from '../../websiteProducts.json';
 
 // Products Section
 const ProductsSection = () => {
     const [currentProduct, setCurrentProduct] = useState(0);
-    const products = [
-        {
-            id: 1,
-            name: "Self Priming Monoblock Pump",
-            image: "imgs/selfPriming.jpeg",
-            features: [
-                "Heavy Duty Motor",
-                "High Head & High Discharge",
-                "Powder-Coated Aluminum Body",
-                "Brass Forged Impellers",
-                "Built-In Non-Return Valve"
-            ]
-        },
-        {
-            id: 2,
-            name: "Openwell Submersible Pump",
-            image: "imgs/openwellSubmersible.jpeg",
-            features: [
-                "High Head & High Discharge",
-                "Continuous Heavy Duty Motor",
-                "Stainless Steel Body",
-                "Rust-Proof SS Shaft",
-                "Low Power Consumption"
-            ]
-        },
-        {
-            id: 3,
-            name: "Borewell Submersible Pump",
-            image: "imgs/borewellSubmersible.jpeg",
-            features: [
-                "Stainless Steel V4 Design",
-                "Enhanced Performance",
-                "Easy Maintenance",
-                "Innovative Design",
-                "Long-lasting Durability"
-            ]
-        },
-        {
-            id: 4,
-            name: "V-Type Self Priming Pump",
-            image: "imgs/VtypePump.jpeg",
-            features: [
-                "Heavy Duty Motor",
-                "High Head & High Discharge",
-                "Brass Forged Impellers",
-                "Carbon Mechanical Seal",
-                "Voltage Variation Tolerance"
-            ]
-        },
-        {
-            id: 5,
-            name: "Centrifugal Monoblock Pump",
-            image: "imgs/centrifugal.jpeg",
-            features: [
-                "Aluminum Impellers",
-                "Powder-Coated Body",
-                "High Reliability",
-                "Carbon Mechanical Seal",
-                "Efficient Performance"
-            ]
-        },
-        {
-            id: 6,
-            name: "DMS Slow Speed Pump",
-            image: "imgs/DMSSlowSpeed.jpeg",
-            features: [
-                "Heavy duty motor",
-                "High head & high discharge ",
-                "Brass forged impeller",
-                "Extreme suction performer",
-                "Voltage variation tolerance"
-            ]
-        }
-    ];
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentProduct((prev) => (prev + 1) % products.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, [products.length]);
+    //this is used for auto scrolling through products
+    // useEffect(() => {
+    //     const timer = setInterval(() => {
+    //         setCurrentProduct((prev) => (prev + 1) % products.length);
+    //     }, 5000);
+    //     return () => clearInterval(timer);
+    // }, [products.length]);
 
     const nextProduct = () => {
         setCurrentProduct((prev) => (prev + 1) % products.length);
@@ -93,6 +21,13 @@ const ProductsSection = () => {
     const prevProduct = () => {
         setCurrentProduct((prev) => (prev - 1 + products.length) % products.length);
     };
+
+    // const handlers = useSwipeable({
+    //     onSwipedLeft: nextProduct,
+    //     onSwipedRight: prevProduct,
+    //     preventDefaultTouchmoveEvent: true,
+    //     trackMouse: true, // Optional: allows swiping with mouse for testing
+    // });
 
     return (
         <section id="products" className="py-20 bg-gradient-to-br from-gray-800 to-gray-900">

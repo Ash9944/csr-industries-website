@@ -1,32 +1,26 @@
-import React,{ useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Quote } from 'lucide-react';
+import { useSwipeable } from 'react-swipeable';
+import { reviews } from '../../websiteProducts.json';
 
 // Reviews Section
 const ReviewsSection = () => {
     const [currentReview, setCurrentReview] = useState(0);
 
-    const reviews = [
-        {
-            title: "Customized Pump Solutions",
-            description: "Tailored to fit specific industrial, agricultural, commercial, and residential requirements",
-            icon: "imgs/Customized pump solution.png"
-        },
-        {
-            title: "Quality Assurance",
-            description: "Rigorous testing and quality checks to ensure every product meets our high standards",
-            icon: "imgs/Quality assurance.png"
-        },
-        {
-            title: "Timely Delivery",
-            description: "We understand the importance of timely delivery and strive to ensure your orders reach you promptly",
-            icon: "imgs/Time delivery.png"
-        },
-        {
-            title: "Expert Advice",
-            description: "We are always available to provide expert advice and guidance to help you make the right choice",
-            icon: "imgs/Expert advice.png"
-        }
-    ];
+    const nextProduct = () => {
+        setCurrentReview((prev) => (prev + 1) % reviews.length);
+    };
+
+    const prevProduct = () => {
+        setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length);
+    };
+
+    const handlers = useSwipeable({
+        onSwipedLeft: nextProduct,
+        onSwipedRight: prevProduct,
+        preventDefaultTouchmoveEvent: true,
+        trackMouse: true, // Optional: allows swiping with mouse for testing
+    });
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -34,6 +28,7 @@ const ReviewsSection = () => {
         }, 5000);
         return () => clearInterval(timer);
     }, [reviews.length]);
+
 
     return (
         <section id="reviews" className="py-20 bg-gradient-to-br from-gray-800 to-gray-900">
@@ -48,7 +43,7 @@ const ReviewsSection = () => {
                 </div>
 
                 <div className="max-w-4xl mx-auto">
-                    <div className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-sm border border-gray-600/30 rounded-3xl p-8 text-center">
+                    <div {...handlers} className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-sm border border-gray-600/30 rounded-3xl p-8 text-center">
                         <Quote className="w-16 h-16 text-blue-400 mx-auto mb-6" />
                         <h3 className="text-2xl font-bold text-white mb-4">{reviews[currentReview].title}</h3>
                         <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden shadow-lg">

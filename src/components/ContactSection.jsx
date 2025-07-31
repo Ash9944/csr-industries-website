@@ -141,13 +141,23 @@ const ContactSection = () => {
                         <div>
                             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
                             <div className="space-y-4">
-                                <div className="flex items-start space-x-4">
-                                    <MapPin className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
-                                    <div>
-                                        <p className="font-semibold">Store Location</p>
-                                        <a className="text-gray-300" href="https://maps.app.goo.gl/H9F4LxR1kstJYz46A" target="_blank" rel="noopener noreferrer">Rajagopal Layout, Krishnarayapuram, Illango Nagar, Coimbatore, Tamil Nadu 641006</a>
+                                <a
+                                    href="https://maps.app.goo.gl/H9F4LxR1kstJYz46A"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    title="Open in Google Maps"
+                                    className="block w-full cursor-pointer"
+                                >
+                                    <div className="flex items-start space-x-4 hover:text-blue-400 transition-colors duration-200">
+                                        <MapPin className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
+                                        <div>
+                                            <p className="font-semibold">Store Location</p>
+                                            <p className="text-gray-300">
+                                                Rajagopal Layout, Krishnarayapuram, Illango Nagar, Coimbatore, Tamil Nadu 641006
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                                 <div className="flex items-center space-x-4">
                                     <Phone className="w-6 h-6 text-blue-400" />
                                     <div>
@@ -168,16 +178,16 @@ const ContactSection = () => {
                         <div>
                             <h4 className="text-xl font-semibold mb-4">Follow Us</h4>
                             <div className="flex space-x-4">
-                                <a href="#" className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/share/1GEg3y2KrW/" className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
                                     <Facebook className="w-6 h-6" />
                                 </a>
-                                <a href="#" className="w-12 h-12 bg-blue-400 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors">
+                                {/* <a href="#" className="w-12 h-12 bg-blue-400 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors">
                                     <Twitter className="w-6 h-6" />
                                 </a>
                                 <a href="#" className="w-12 h-12 bg-blue-700 hover:bg-blue-800 rounded-full flex items-center justify-center transition-colors">
                                     <Linkedin className="w-6 h-6" />
-                                </a>
-                                <a href="#" className="w-12 h-12 bg-pink-600 hover:bg-pink-700 rounded-full flex items-center justify-center transition-colors">
+                                </a> */}
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/csr.industries?igsh=MXZ2Ymtrd3RleDR2OQ==" className="w-12 h-12 bg-pink-600 hover:bg-pink-700 rounded-full flex items-center justify-center transition-colors">
                                     <Instagram className="w-6 h-6" />
                                 </a>
                             </div>
