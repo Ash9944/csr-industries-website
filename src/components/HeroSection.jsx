@@ -1,5 +1,6 @@
 // Hero Section
 import React from 'react';
+
 const HeroSection = () => {
   return (
     <section id="home" className="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
