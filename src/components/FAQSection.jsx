@@ -23,7 +23,7 @@ export default function ModernFAQSection() {
     };
 
     return (
-        <section className="min-h-screen bg-gray-900 p-8">
+        <section id="faq" className="min-h-screen bg-gray-900 p-8">
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-8">
 
