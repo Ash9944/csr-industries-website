@@ -1,76 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
-import { products } from '../../websiteProducts.json';
+import { useState } from "react";
+import { ChevronLeft, ChevronRight, CheckCircle } from "lucide-react";
+import { useSwipeable } from "react-swipeable";
+import { motion, AnimatePresence } from "framer-motion";
+import { products } from '../../websiteProducts.json'
+// Ensure your `products` array is defined/imported above
+// const products = [{ name, image, features: [...] }, ...]
 
-// Products Section
 const ProductsSection = () => {
     const [currentProduct, setCurrentProduct] = useState(0);
-
-    //this is used for auto scrolling through products
-    // useEffect(() => {
-    //     const timer = setInterval(() => {
-    //         setCurrentProduct((prev) => (prev + 1) % products.length);
-    //     }, 5000);
-    //     return () => clearInterval(timer);
-    // }, [products.length]);
+    const [direction, setDirection] = useState(0); // -1: back, 1: next
 
     const nextProduct = () => {
+        setDirection(1);
         setCurrentProduct((prev) => (prev + 1) % products.length);
     };
 
     const prevProduct = () => {
+        setDirection(-1);
         setCurrentProduct((prev) => (prev - 1 + products.length) % products.length);
     };
 
-    // const handlers = useSwipeable({
-    //     onSwipedLeft: nextProduct,
-    //     onSwipedRight: prevProduct,
-    //     preventDefaultTouchmoveEvent: true,
-    //     trackMouse: true, // Optional: allows swiping with mouse for testing
-    // });
+    const handlers = useSwipeable({
+        onSwipedLeft: nextProduct,
+        onSwipedRight: prevProduct,
+        preventDefaultTouchmoveEvent: true,
+        trackMouse: true,
+    });
+
+    const variants = {
+        enter: (direction) => ({
+            x: direction > 0 ? 300 : -300,
+            opacity: 0,
+        }),
+        center: {
+            x: 0,
+            opacity: 1,
+        },
+        exit: (direction) => ({
+            x: direction > 0 ? -300 : 300,
+            opacity: 0,
+        }),
+    };
 
     return (
         <section id="products" className="py-20 bg-gradient-to-br from-gray-800 to-gray-900">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-                        Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-red-400">Products</span>
+                        Our{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-red-400">
+                            Products
+                        </span>
                     </h2>
                     <p className="text-gray-300 text-lg max-w-2xl mx-auto">
                         Discover our comprehensive range of high-quality pumps designed for various applications
                     </p>
                 </div>
 
-                <div className="relative max-w-6xl mx-auto">
+                <div className="relative max-w-6xl mx-auto" {...handlers}>
                     <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-sm border border-gray-600/30">
-                        <div className="grid lg:grid-cols-2 gap-8 p-8">
-                            <div className="relative">
-                                <div className="aspect-square rounded-2xl overflow-hidden shadow-lg">
-                                    <img
-                                        src={products[currentProduct].image}
-                                        alt={`${products[currentProduct].name} - CSR Industries Premium Quality`}
-                                        className="w-full h-full object-cover"
-                                    />
+                        <AnimatePresence mode="wait" custom={direction}>
+                            <motion.div
+                                key={currentProduct}
+                                custom={direction}
+                                variants={variants}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
+                                transition={{ duration: 0.4 }}
+                                className="grid lg:grid-cols-2 gap-8 p-8"
+                            >
+                                <div className="relative">
+                                    <div className="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                                        <img
+                                            src={products[currentProduct].image}
+                                            alt={`${products[currentProduct].name} - CSR Industries Premium Quality`}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="text-white space-y-6">
-                                <h3 className="text-3xl font-bold">{products[currentProduct].name}</h3>
-                                <div className="space-y-3">
-                                    {products[currentProduct].features.map((feature, index) => (
-                                        <div key={index} className="flex items-center space-x-3">
-                                            <CheckCircle className="w-6 h-5 text-green-400" />
-                                            <span className="text-xl text-gray-200">{feature}</span>
-                                        </div>
-                                    ))}
+                                <div className="text-white space-y-6">
+                                    <h3 className="text-3xl font-bold">{products[currentProduct].name}</h3>
+                                    <div className="space-y-3">
+                                        {products[currentProduct].features.map((feature, index) => (
+                                            <div key={index} className="flex items-center space-x-3">
+                                                <CheckCircle className="w-6 h-5 text-green-400" />
+                                                <span className="text-xl text-gray-200">{feature}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                                {/* <button className="bg-gradient-to-r from-blue-500 to-red-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                  Learn More
-                </button> */}
-                            </div>
-                        </div>
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
 
+                    {/* Prev & Next Buttons */}
                     <button
                         onClick={prevProduct}
                         className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-700/80 hover:bg-gray-600 text-white p-3 rounded-full transition-all duration-300"
@@ -84,12 +109,18 @@ const ProductsSection = () => {
                         <ChevronRight className="w-6 h-6" />
                     </button>
 
+                    {/* Dots */}
                     <div className="flex justify-center space-x-2 mt-8">
                         {products.map((_, index) => (
                             <button
                                 key={index}
-                                onClick={() => setCurrentProduct(index)}
-                                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentProduct ? 'bg-blue-500' : 'bg-gray-600'
+                                onClick={() => {
+                                    if (index !== currentProduct) {
+                                        setDirection(index > currentProduct ? 1 : -1);
+                                        setCurrentProduct(index);
+                                    }
+                                }}
+                                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentProduct ? "bg-blue-500" : "bg-gray-600"
                                     }`}
                             />
                         ))}
