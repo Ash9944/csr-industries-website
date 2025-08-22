@@ -45,7 +45,7 @@ const HeroSection = () => {
           <div className="relative animate-fadeInRight">
             <div className="w-full h-360 rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="imgs/IMG_20240724_200058.jpg"
+                src="imgs/heroSectionImage-2.jpeg"
                 alt="CSR Industries Premium Water Pump Motor - Best Pumps in Coimbatore"
                 className="w-full h-full object-cover"
               />

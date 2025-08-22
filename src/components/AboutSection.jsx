@@ -20,11 +20,11 @@ const AboutSection = () => {
                         <div className="grid grid-cols-2 gap-6 mt-8">
                             <div className="bg-gradient-to-br from-blue-500/20 to-transparent p-6 rounded-2xl border border-blue-500/30">
                                 <h4 className="text-xl font-bold mb-2">Performance is Optimized </h4>
-                                <p className="text-gray-400">Customization allows fine-tuning of aspects like impeller design and materials, ensuring enhanced flow rates, pressure, and energy efficiency for a specific application.</p>
+                                <p className="text-gray-400">The act of tailoring the pump's components and enhanced customisation.</p>
                             </div>
                             <div className="bg-gradient-to-br from-red-500/20 to-transparent p-6 rounded-2xl border border-red-500/30">
                                 <h4 className="text-xl font-bold mb-2">Expert Support</h4>
-                                <p className="text-gray-400">By providing the right pump for the job, the company helps minimize energy consumption, reduce maintenance needs, and extend the lifespan of the pump, leading to cost savings over time.</p>
+                                <p className="text-gray-400">Right pump choice saves energy, extends lifespan, and cuts costs.</p>
                             </div>
                         </div>
                     </div>
