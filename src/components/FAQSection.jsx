@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, Search, Mail } from 'lucide-react';
+import { ChevronDown, Search, Mail } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { faqs } from '../../websiteProducts.json';
 
 export default function ModernFAQSection() {
@@ -8,9 +9,7 @@ export default function ModernFAQSection() {
 
     const scrollToSection = (sectionId) => {
         const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
     };
 
     const filteredFAQs = faqs.filter(faq =>
@@ -22,14 +21,38 @@ export default function ModernFAQSection() {
         setExpandedFAQ(expandedFAQ === index ? null : index);
     };
 
+    // 🧠 Build Schema.org JSON-LD structure dynamically
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    };
+
     return (
         <section id="faq" className="min-h-screen bg-gray-900 p-8">
+            {/* ✅ Add structured data to <head> */}
+            <Helmet>
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
+                </script>
+                <title>Frequently Asked Questions | CSR Industries</title>
+                <meta
+                    name="description"
+                    content="Find answers to common questions about CSR Industries' products, services, and support."
+                />
+            </Helmet>
+
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-8">
-
-                    {/* Left Column - Title, Search and Contact */}
+                    {/* Left Column */}
                     <div className="flex flex-col justify-between">
-                        {/* Header */}
                         <div>
                             <h1 className="text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
                                 Frequently asked{' '}
@@ -56,12 +79,15 @@ export default function ModernFAQSection() {
                         {/* Contact Card */}
                         <div className="bg-gray-800/60 border border-gray-700/40 rounded-2xl p-8">
                             <h3 className="text-xl font-semibold text-white mb-3">
-                                Still have a questions?
+                                Still have a question?
                             </h3>
                             <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-                                Can't find the answer to your question? Send us an email and we'll get back to you as soon as possible.
+                                Can’t find the answer to your question? Send us an email and we’ll get back to you as soon as possible.
                             </p>
-                            <button onClick={() => scrollToSection('contact')} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-red-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                            <button
+                                onClick={() => scrollToSection('contact')}
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-red-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                            >
                                 <Mail className="w-4 h-4" />
                                 Send email
                             </button>

@@ -17,8 +17,35 @@ const App = () => {
     <div className="min-h-screen bg-gray-900">
       <SEOHead
         title="CSR Industries | Best Pumps in Coimbatore - Motor Pump Manufacturers Since 1986"
-        description="Leading motor pump manufacturers in Coimbatore since 1986. Premium water pump motors, submersible pumps, self-priming pumps, and industrial pumping solutions. Quality guaranteed."
-        keywords="motor pump manufacturers coimbatore, water pump motors, submersible pumps, self priming pumps, industrial pumps, pump manufacturers tamil nadu, CSR Industries, Shelby pumps"
+        
+        description="
+        Leading motor pump manufacturers in Coimbatore since 1986.
+        Premium water pump motors, 
+        submersible pumps, 
+        self-priming pumps, 
+        and industrial pumping solutions. Available in various HP's .Quality guaranteed."
+
+        keywords="motor pump manufacturers coimbatore, 
+        water pump motors, 
+        submersible pumps, 
+        self priming pumps,
+        industrial pumps, 
+        pump manufacturers tamil nadu, 
+        CSR Industries, 
+        Shelby pumps,
+        Best water motor for home usage,
+        Best water motor for 2 story buildings,
+        Best water motor for 4 story buildings,
+        1/2 hp motor pump,
+        1/2 hp water motor,
+        1/2 hp water motor price
+        1 hp motor pump,
+        1 hp water motor,
+        1 hp water motor price
+        2 hp motor pump,
+        2 hp water motor,
+        2 hp water motor price,
+        Customized water motor pumps"
       />
 
       <Header />

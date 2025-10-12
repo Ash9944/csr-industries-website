@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, Award, Users, Clock } from 'lucide-react';
+import { Star, Award, Users, LandPlot } from 'lucide-react';
 import { stats } from '../../websiteProducts.json';
 
 // Stats Section
@@ -13,7 +13,7 @@ const StatsSection = () => {
                             <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                                 {stat.icon === 'Award' && <Award className="w-8 h-8" />}
                                 {stat.icon === 'Users' && <Users className="w-8 h-8" />}
-                                {stat.icon === 'Clock' && <Clock className="w-8 h-8" />}
+                                {stat.icon === 'LandPlot' && <LandPlot className="w-8 h-8" />}
                                 {stat.icon === 'Star' && <Star className="w-8 h-8" />}
                             </div>
                             <h3 className="text-4xl font-bold mb-2">{stat.value}</h3>
