@@ -134,9 +134,54 @@
     }
   ],
   "stats": [
-    { "icon": "Award", "value": "456", "label": "Products Delivered" },
+    { "icon": "Award", "value": "456", "label": "Units Delivered" },
     { "icon": "Users", "value": "599", "label": "Happy Customers" },
-    { "icon": "Clock", "value": "780", "label": "Hours Worked" },
+    { "icon": "LandPlot", "value": "100+", "label": "Locations Delivered" },
     { "icon": "Star", "value": "38+", "label": "Years Experience" }
+  ],
+  "testimonials" : [
+    {
+      "id": 1,
+      "description": "Very nice and long last motor runs, we are very very happy with product, less price high worth, salute to the owner of Good will launch",
+      "author": "Reena Jess",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjUXEMgTNBkkuJ3rlzhj3aYRSOvxzt05DIqw-K-SeKVjhIpuxgmp=w144-h144-p-rp-mo-br100",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "description": "Good products.. long life.. effordable price.. quickly delivery..  Good maintain support...",
+      "author": "Gowtham N",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocLuKtrPEF4RjOsRBbyELA3Ha9SS9uMeUpLRTZJd320F2667Od4=w144-h144-p-rp-mo-ba2-br100",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "description": "Best in the business. Good quality products with affordable price. Very happy with the service and product.",
+      "author": "Naveen Donatus",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocJ3lNw89zcUdZGyyedsqrM0nCuNqvKytsMMSqOdCjrwzpXlwQ=w144-h144-p-rp-mo-br100",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "description": "Very good product and service. I am very happy with the product performance and the service provided by CSR Industries.",
+      "author": "Sibin",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocJrd6qpUmczv4V0uTIIRrQxwi7kA_eHhB-WS6I6TR0HxhXq5w=w144-h144-p-rp-mo-br100",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "description": "Motor is very good and service also good. I am very happy with the product performance and the service provided by CSR Industries.",
+      "author": "Nishanth Melvin",
+      "avatar": "https://lh3.googleusercontent.com/a-/ALV-UjWbvnok0D0KQ_AVWOBcbKxcmWQdM5pWpFfsEaNSX_uvS8ztzlKKhA=w144-h144-p-rp-mo-br100",
+      "rating": 5
+    }
+  ],
+  "dummyReviews" : [
+    "Very nice and long-lasting motor! We’re extremely happy with this product. Excellent quality at a great price — truly worth every rupee. Hats off to the owner for such a wonderful launch!",
+    "Great products with long life and affordable prices. Quick delivery and excellent maintenance support. Highly recommended!",
+    "Best in the business! Good quality products at affordable prices. Very happy with both the service and the product.",
+    "Excellent product and service. I am very satisfied with the performance of the product and the service provided by CSR Industries.",
+    "The motor is very good, and the service is also commendable. I am very pleased with the product's performance and the service provided by CSR Industries."
   ]
+
 }

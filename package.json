@@ -9,6 +9,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "axios": "^1.12.2",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.534.0",

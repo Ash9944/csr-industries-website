@@ -11,6 +11,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { Toaster } from "react-hot-toast";
+import Testimonials from './components/Testimonials';
 
 const App = () => {
   return (
@@ -54,6 +55,7 @@ const App = () => {
       <StatsSection />
       <AboutSection />
       <ReviewsSection />
+      <Testimonials/>
       <FAQSection />
       <ContactSection />
       <Footer />

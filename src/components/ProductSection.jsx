@@ -68,7 +68,7 @@ const ProductsSection = () => {
 
     return (
         <section id="products" className="py-20 bg-gradient-to-br from-gray-800 to-gray-900">
-            {/* 🧠 SEO JSON-LD */}
+            
             <Helmet>
                 <script type="application/ld+json">
                     {JSON.stringify(schemaData)}
