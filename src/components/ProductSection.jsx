@@ -130,42 +130,52 @@ const ProductsSection = () => {
                                                         <th className="px-4 py-3 text-left font-semibold text-gray-300">
                                                             RANGE
                                                         </th>
-                                                        {product.specifications.models && product.specifications.models.map((model, index) => (
-                                                            <th key={index} className="px-4 py-3 font-semibold text-gray-200">
-                                                                {model}
-                                                            </th>
-                                                        ))}
+                                                        {
+                                                            product.specifications.models && product.specifications.models.map((model, index) => (
+                                                                <th key={index} className="px-4 py-3 font-semibold text-gray-200">
+                                                                    {model}
+                                                                </th>
+                                                            ))
+                                                        }
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {product.specifications.specs && product.specifications.specs.map((spec, index) => (
-                                                        <tr key={index} className={index % 2 === 0 ? "bg-gray-700/30" : ""}>
-                                                            <td className="px-4 py-3 text-left font-semibold text-gray-300 border-r border-gray-600/30">
-                                                                {spec.label}
-                                                            </td>
-                                                            {spec.values.map((value, vIndex) => (
-                                                                <td key={vIndex} className="px-4 py-3 text-gray-200">
-                                                                    {value}
+                                                    {
+                                                        product.specifications.specs && product.specifications.specs.map((spec, index) => (
+                                                            <tr key={index} className={index % 2 === 0 ? "bg-gray-700/30" : ""}>
+                                                                <td className="px-4 py-3 text-left font-semibold text-gray-300 border-r border-gray-600/30">
+                                                                    {spec.label}
                                                                 </td>
-                                                            ))}
-                                                        </tr>
-                                                    ))}
+                                                                {
+                                                                    spec.values.map((value, vIndex) => (
+                                                                        <td key={vIndex} className="px-4 py-3 text-gray-200">
+                                                                            {value}
+                                                                        </td>
+                                                                    ))
+                                                                }
+                                                            </tr>
+                                                        ))
+                                                    }
                                                 </tbody>
                                             </table>
                                         </div>
                                     )}
 
-                                    {product.features && product.features.length > 0 && (
-                                        <div className="space-y-2">
-                                            <h4 className="text-xl font-semibold text-gray-200">Key Features</h4>
-                                            {product.features.map((feature, index) => (
-                                                <div key={index} className="flex items-start space-x-3">
-                                                    <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                                                    <span className="text-lg text-gray-200">{feature}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
+                                    {
+                                        product.features && product.features.length > 0 && (
+                                            <div className="space-y-2">
+                                                <h4 className="text-xl font-semibold text-gray-200">Key Features</h4>
+                                                {
+                                                    product.features.map((feature, index) => (
+                                                        <div key={index} className="flex items-start space-x-3">
+                                                            <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                                                            <span className="text-lg text-gray-200">{feature}</span>
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             </motion.div>
                         </AnimatePresence>
