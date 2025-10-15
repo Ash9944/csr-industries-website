@@ -129,7 +129,7 @@ export default function Testimonials() {
   }
 
   return (
-    <div className="min-h-screen bg-black py-16 px-1 overflow-hidden">
+    <section id="testimonials" className="min-h-screen bg-black py-16 px-1 overflow-hidden">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
@@ -231,7 +231,7 @@ export default function Testimonials() {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

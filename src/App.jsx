@@ -19,7 +19,7 @@ const App = () => {
     <div className="min-h-screen bg-gray-900">
       <SEOHead
         title="CSR Industries | Best Pumps in Coimbatore - Motor Pump Manufacturers Since 1986"
-        
+
         description="
         Leading motor pump manufacturers in Coimbatore since 1986.
         Premium water pump motors, 
@@ -53,11 +53,11 @@ const App = () => {
       <Header />
       <HeroSection />
       <ProductsSection />
-      <ServicesSection/>
-      <StatsSection />
       <AboutSection />
+      <StatsSection />
+      <ServicesSection />
       <ReviewsSection />
-      <Testimonials/>
+      <Testimonials />
       <FAQSection />
       <ContactSection />
       <Footer />

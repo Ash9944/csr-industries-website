@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Wrench, Settings, Clock, Package, Headphones, Shield, ToolCase, Zap } from "lucide-react";
+import { Wrench, Clock, Package, Headphones, Shield, Zap } from "lucide-react";
 
 const ServicesSection = () => {
     const services = [
@@ -29,9 +29,9 @@ const ServicesSection = () => {
             description: "Extended warranty and service contracts"
         },
         {
-            icon: Settings,
-            title: "Customization",
-            description: "Custom solutions tailored to your requirements"
+            icon: Zap,
+            title: "Emergency Service",
+            description: "Quick response for urgent repair needs"
         }
     ];
 
@@ -62,7 +62,7 @@ const ServicesSection = () => {
     };
 
     return (
-        <section id="services" className="py-20 bg-gradient-to-br from-gray-900 to-gray-800">
+        <section id="services" className="py-20 bg-gray-900">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <motion.h2
@@ -138,7 +138,7 @@ const ServicesSection = () => {
                 >
                     <button
                         onClick={() => scrollToSection('contact')}
-                        className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                        className="bg-gradient-to-r from-blue-500 to-red-500 hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
                         Contact Us for Services
                     </button>
                 </motion.div>
