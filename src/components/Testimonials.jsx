@@ -1,4 +1,4 @@
-import { Star } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { testimonials as testimonialJson, dummyReviews } from "../../websiteProducts.json";
 import axios from 'axios';
@@ -70,8 +70,7 @@ export default function Testimonials() {
               key={testimonial.id}
               className="bg-gray-900 border border-gray-800 rounded-lg p-8 hover:border-gray-700 transition-colors flex flex-col"
             >
-              {/* Quote Icon */}
-              <div className="text-cyan-400 text-4xl mb-6">"</div>
+              <Quote className="text-cyan-400 text-4xl mb-6" />
 
               {/* Title and Description */}
               <h3 className="text-xl font-semibold text-white mb-3">

@@ -36,13 +36,12 @@ export default function ModernFAQSection() {
     };
 
     return (
-        <section id="faq" className="min-h-screen bg-gray-900 p-8">
+        <section id="faq" className="min-h-screen bg-gray-900 p-10">
             {/* ✅ Add structured data to <head> */}
             <Helmet>
                 <script type="application/ld+json">
                     {JSON.stringify(faqSchema)}
                 </script>
-                <title>Frequently Asked Questions | CSR Industries</title>
                 <meta
                     name="description"
                     content="Find answers to common questions about CSR Industries' products, services, and support."

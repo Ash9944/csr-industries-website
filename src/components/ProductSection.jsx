@@ -40,20 +40,19 @@ const ProductsSection = () => {
         }),
     };
 
-    // 🧩 Generate Product Schema JSON-LD dynamically
     const schemaData = {
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": product.name,
         "image": [product.image],
-        "description": product.features.join(", "),
+        "description": product.description || product.features.join(", "),
         "brand": {
             "@type": "Brand",
-            "name": "CSR Industries" // replace with your brand name
+            "name": "CSR Industries"
         },
         "offers": {
             "@type": "Offer",
-            "url": window.location.href,
+            "url": typeof window !== 'undefined' ? window.location.href : '',
             "priceCurrency": "INR",
             "price": product.price ?? "0",
             "availability": "https://schema.org/InStock",
@@ -68,7 +67,6 @@ const ProductsSection = () => {
 
     return (
         <section id="products" className="py-20 bg-gradient-to-br from-gray-800 to-gray-900">
-            
             <Helmet>
                 <script type="application/ld+json">
                     {JSON.stringify(schemaData)}
@@ -76,7 +74,7 @@ const ProductsSection = () => {
                 <title>{`${product.name} | CSR Industries`}</title>
                 <meta
                     name="description"
-                    content={`Explore ${product.name} — ${product.features.join(", ")}`}
+                    content={`Explore ${product.name} — ${product.description || product.features.join(", ")}`}
                 />
             </Helmet>
 
@@ -116,36 +114,78 @@ const ProductsSection = () => {
                                     </div>
                                 </div>
 
-                                <div className="text-white space-y-6">
+                                <div className="text-white">
                                     <h3 className="text-3xl font-bold">{product.name}</h3>
-                                    <div className="space-y-3">
-                                        {product.features.map((feature, index) => (
-                                            <div key={index} className="flex items-center space-x-3">
-                                                <CheckCircle className="w-6 h-5 text-green-400" />
-                                                <span className="text-xl text-gray-200">{feature}</span>
-                                            </div>
-                                        ))}
-                                    </div>
+                                    {product.description && (
+                                        <p className="text-gray-300 text-md leading-relaxed mb-5">
+                                            {product.description}
+                                        </p>
+                                    )}
+
+                                    {product.specifications && Object.keys(product.specifications).length > 0 && (
+                                        <div className="bg-gray-800/50 rounded-lg overflow-hidden border border-gray-600/30 mb-5">
+                                            <table className="w-full text-center">
+                                                <thead>
+                                                    <tr className="bg-gray-700/50 border-b border-gray-600/30">
+                                                        <th className="px-4 py-3 text-left font-semibold text-gray-300">
+                                                            RANGE
+                                                        </th>
+                                                        {product.specifications.models && product.specifications.models.map((model, index) => (
+                                                            <th key={index} className="px-4 py-3 font-semibold text-gray-200">
+                                                                {model}
+                                                            </th>
+                                                        ))}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {product.specifications.specs && product.specifications.specs.map((spec, index) => (
+                                                        <tr key={index} className={index % 2 === 0 ? "bg-gray-700/30" : ""}>
+                                                            <td className="px-4 py-3 text-left font-semibold text-gray-300 border-r border-gray-600/30">
+                                                                {spec.label}
+                                                            </td>
+                                                            {spec.values.map((value, vIndex) => (
+                                                                <td key={vIndex} className="px-4 py-3 text-gray-200">
+                                                                    {value}
+                                                                </td>
+                                                            ))}
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    )}
+
+                                    {product.features && product.features.length > 0 && (
+                                        <div className="space-y-2">
+                                            <h4 className="text-xl font-semibold text-gray-200">Key Features</h4>
+                                            {product.features.map((feature, index) => (
+                                                <div key={index} className="flex items-start space-x-3">
+                                                    <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                                                    <span className="text-lg text-gray-200">{feature}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             </motion.div>
                         </AnimatePresence>
                     </div>
 
-                    {/* Prev & Next Buttons */}
                     <button
                         onClick={prevProduct}
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-700/80 hover:bg-gray-600 text-white p-3 rounded-full transition-all duration-300"
+                        aria-label="Previous product"
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-700/80 hover:bg-gray-600 text-white p-3 rounded-full transition-all duration-300 shadow-lg"
                     >
                         <ChevronLeft className="w-6 h-6" />
                     </button>
                     <button
                         onClick={nextProduct}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-700/80 hover:bg-gray-600 text-white p-3 rounded-full transition-all duration-300"
+                        aria-label="Next product"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-700/80 hover:bg-gray-600 text-white p-3 rounded-full transition-all duration-300 shadow-lg"
                     >
                         <ChevronRight className="w-6 h-6" />
                     </button>
 
-                    {/* Dots */}
                     <div className="flex justify-center space-x-2 mt-8">
                         {products.map((_, index) => (
                             <button
@@ -156,7 +196,8 @@ const ProductsSection = () => {
                                         setCurrentProduct(index);
                                     }
                                 }}
-                                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentProduct ? "bg-blue-500" : "bg-gray-600"
+                                aria-label={`Go to product ${index + 1}`}
+                                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentProduct ? "bg-blue-500 w-8" : "bg-gray-600"
                                     }`}
                             />
                         ))}

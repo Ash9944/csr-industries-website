@@ -42,41 +42,96 @@
       "id": 1,
       "name": "Self Priming Monoblock Pump",
       "image": "imgs/selfPriming.jpeg",
+      "description": "boasts a range of impressive features designed to ensure high performance, durability, and efficiency in various applications. Here’s a detailed look at its salient features and specifications:",
       "features": [
         "Heavy Duty Motor",
         "High Head & High Discharge",
         "Powder-Coated Aluminum Body",
         "Brass Forged Impellers",
         "Built-In Non-Return Valve"
-      ]
+      ],
+      "specifications": {
+        "models": ["½ HP", "1 HP"],
+        "specs": [
+          {
+            "label": "HEAD",
+            "values": ["80 feet", "120 feet"]
+          },
+          {
+            "label": "CURRENT",
+            "values": ["2.8 A", "5 A"]
+          },
+          {
+            "label": "FLOW RATE",
+            "values": ["2500 LPH", "3000 LPH"]
+          }
+        ]
+      }
     },
     {
       "id": 2,
       "name": "Openwell Submersible Pump",
       "image": "imgs/openwellSubmersible.jpeg",
+      "description": "These features collectively enhance the performance, efficiency, and longevity of the Openwell Submersible Pumps, making them a robust choice for various water management needs.",
       "features": [
         "High Head & High Discharge",
         "Continuous Heavy Duty Motor",
         "Stainless Steel Body",
         "Rust-Proof SS Shaft",
         "Low Power Consumption"
-      ]
+      ],
+      "specifications": {
+        "models": ["½ HP", "1 HP"],
+        "specs": [
+          {
+            "label": "HEAD",
+            "values": ["70 feet", "90 feet"]
+          },
+          {
+            "label": "CURRENT",
+            "values": ["6 A", "8 A"]
+          },
+          {
+            "label": "FLOW RATE",
+            "values": ["3000 LPH", "4150 LPH"]
+          }
+        ]
+      }
     },
     {
       "id": 3,
       "name": "DMS Slow Speed Pump",
       "image": "imgs/DMSSlowSpeed.jpeg",
+      "description": " by CSR Industries boasts several advanced features and benefits, making it a standout choice for domestic water pumping needs. Here’s a detailed overview.",
       "features": [
         "Heavy duty motor",
         "High head & high discharge ",
         "Brass forged impeller",
         "Extreme suction performer",
         "Voltage variation tolerance"
-      ]
+      ],
+      "specifications": {
+        "models": ["½ HP", "1 HP"],
+        "specs": [
+          {
+            "label": "HEAD",
+            "values": ["95 feet", "130 feet"]
+          },
+          {
+            "label": "CURRENT",
+            "values": ["3.5 A", "5 A"]
+          },
+          {
+            "label": "FLOW RATE",
+            "values": ["2450 LPH", "3380 LPH"]
+          }
+        ]
+      }
     },
     {
       "id": 4,
       "name": "V-Type Self Priming Pump",
+      "description": "boasts a range of impressive features designed to ensure high performance, durability, and efficiency in various applications. Here’s a detailed look at its salient features:",
       "image": "imgs/VtypePump.jpeg",
       "features": [
         "Heavy Duty Motor",
@@ -84,11 +139,29 @@
         "Brass Forged Impellers",
         "Carbon Mechanical Seal",
         "Voltage Variation Tolerance"
-      ]
+      ],
+      "specifications": {
+        "models": ["½ HP"],
+        "specs": [
+          {
+            "label": "HEAD",
+            "values": ["130 feet"]
+          },
+          {
+            "label": "CURRENT",
+            "values": ["3.5 A"]
+          },
+          {
+            "label": "FLOW RATE",
+            "values": ["2650 LPH"]
+          }
+        ]
+      }
     },
     {
       "id": 5,
       "name": "Centrifugal Monoblock Pump",
+      "description": "by CSR Industries boasts several advanced features and benefits, making it a standout choice for domestic water pumping needs. Here’s a detailed overview.",
       "image": "imgs/centrifugal.jpeg",
       "features": [
         "Aluminum Impellers",
@@ -96,11 +169,29 @@
         "High Reliability",
         "Carbon Mechanical Seal",
         "Efficient Performance"
-      ]
+      ],
+      "specifications": {
+        "models": ["½ HP", "1 HP"],
+        "specs": [
+          {
+            "label": "HEAD",
+            "values": ["70 feet", "90 feet"]
+          },
+          {
+            "label": "CURRENT",
+            "values": ["2.8 A", "5 A"]
+          },
+          {
+            "label": "FLOW RATE",
+            "values": ["5640 LPH", "7590 LPH"]
+          }
+        ]
+      }
     },
     {
       "id": 6,
       "name": "Borewell Submersible Pump",
+      "description": "Head depends on the bore drilled underground. current consumed for each horsepower is given below. flow rate depends on the bore diameter and the water level in the bore.",
       "image": "imgs/borewellSubmersible.jpeg",
       "features": [
         "Stainless Steel V4 Design",
@@ -108,7 +199,16 @@
         "Easy Maintenance",
         "Innovative Design",
         "Long-lasting Durability"
-      ]
+      ],
+      "specifications": {
+        "models": ["½ HP", "1 HP", "1½ HP", "2 HP"],
+        "specs": [
+          {
+            "label": "CURRENT",
+            "values": ["6 A", "7.5 A", "10 A", "12 A"]
+          }
+        ]
+      }
     }
   ],
   "reviews": [
@@ -139,7 +239,7 @@
     { "icon": "LandPlot", "value": "100+", "label": "Locations Delivered" },
     { "icon": "Star", "value": "38+", "label": "Years Experience" }
   ],
-  "testimonials" : [
+  "testimonials": [
     {
       "id": 1,
       "description": "Very nice and long last motor runs, we are very very happy with product, less price high worth, salute to the owner of Good will launch",
@@ -176,12 +276,11 @@
       "rating": 5
     }
   ],
-  "dummyReviews" : [
+  "dummyReviews": [
     "Very nice and long-lasting motor! We’re extremely happy with this product. Excellent quality at a great price — truly worth every rupee. Hats off to the owner for such a wonderful launch!",
     "Great products with long life and affordable prices. Quick delivery and excellent maintenance support. Highly recommended!",
     "Best in the business! Good quality products at affordable prices. Very happy with both the service and the product.",
     "Excellent product and service. I am very satisfied with the performance of the product and the service provided by CSR Industries.",
     "The motor is very good, and the service is also commendable. I am very pleased with the product's performance and the service provided by CSR Industries."
   ]
-
 }

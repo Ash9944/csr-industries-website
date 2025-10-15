@@ -44,7 +44,6 @@ const ReviewsSection = () => {
 
                 <div className="max-w-4xl mx-auto">
                     <div {...handlers} className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-sm border border-gray-600/30 rounded-3xl p-8 text-center">
-                        <Quote className="w-16 h-16 text-blue-400 mx-auto mb-6" />
                         <h3 className="text-2xl font-bold text-white mb-4">{reviews[currentReview].title}</h3>
                         <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
                             <img
