@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { Toaster } from "react-hot-toast";
 import Testimonials from './components/Testimonials';
+import ServicesSection from './components/Services';
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
       <Header />
       <HeroSection />
       <ProductsSection />
+      <ServicesSection/>
       <StatsSection />
       <AboutSection />
       <ReviewsSection />
