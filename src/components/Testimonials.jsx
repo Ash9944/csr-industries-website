@@ -198,7 +198,7 @@ export default function Testimonials() {
         <div className="flex justify-center items-center gap-8">
           <button
             onClick={prevSlide}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
+            className="bg-gradient-to-r from-blue-500 to-red-500 hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-white p-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -212,11 +212,10 @@ export default function Testimonials() {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className={`transition-all duration-300 rounded-full ${
-                  index === currentIndex
-                    ? 'w-12 h-3 bg-gradient-to-r from-blue-500 to-purple-500'
+                className={`transition-all duration-300 rounded-full ${index === currentIndex
+                    ? 'w-12 h-3 bg-gradient-to-r from-blue-500 to-red-500'
                     : 'w-3 h-3 bg-gray-600 hover:bg-gray-500'
-                }`}
+                  }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
@@ -224,7 +223,7 @@ export default function Testimonials() {
 
           <button
             onClick={nextSlide}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
+            className="bg-gradient-to-r from-blue-500 to-red-500 hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-white p-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-6 h-6" />
