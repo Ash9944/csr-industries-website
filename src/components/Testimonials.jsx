@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { testimonials as testimonialJson, dummyReviews } from "../../websiteProducts.json";
 import axios from 'axios';
+import WaterRippleLoader from './WaterRippleLoader';
 
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState([]);
@@ -123,13 +124,13 @@ export default function Testimonials() {
   if (testimonials.length === 0) {
     return (
       <div className="min-h-screen bg-black py-16 px-4 flex items-center justify-center">
-        <div className="text-white text-xl">Loading testimonials...</div>
+        <WaterRippleLoader></WaterRippleLoader>
       </div>
     );
   }
 
   return (
-    <section id="testimonials" className="min-h-screen bg-black py-16 px-1 overflow-hidden">
+    <section id="testimonials" className="bg-black py-16 px-1 overflow-hidden">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
@@ -149,7 +150,7 @@ export default function Testimonials() {
         </motion.div>
 
         {/* 3D Carousel */}
-        <div className="relative h-[500px]" style={{ perspective: '2000px' }}>
+        <div className="relative h-[400px]" style={{ perspective: '2000px' }}>
           {getVisibleTestimonials().map((testimonial) => (
             <div
               key={testimonial.id}
@@ -213,8 +214,8 @@ export default function Testimonials() {
                   setCurrentIndex(index);
                 }}
                 className={`transition-all duration-300 rounded-full ${index === currentIndex
-                    ? 'w-12 h-3 bg-gradient-to-r from-blue-500 to-red-500'
-                    : 'w-3 h-3 bg-gray-600 hover:bg-gray-500'
+                  ? 'w-12 h-3 bg-gradient-to-r from-blue-500 to-red-500'
+                  : 'w-3 h-3 bg-gray-600 hover:bg-gray-500'
                   }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

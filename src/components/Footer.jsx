@@ -50,7 +50,7 @@ const Footer = () => {
                 <div className="border-t border-gray-800 pt-8 text-center">
                     <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <p className="text-gray-400">
-                            © 2024 CSR Industries. All rights reserved.
+                            © {new Date().getFullYear()} CSR Industries. All rights reserved.
                         </p>
                         <div className="flex space-x-4">
                             <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/share/1GEg3y2KrW/" className="text-gray-400 hover:text-blue-400 transition-colors">
