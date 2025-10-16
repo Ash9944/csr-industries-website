@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Phone, MapPin, Mail, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import toast from 'react-hot-toast';
-import emailjs from "emailjs-com";
+import { sendContactEmail } from '../httpRequests';
 
 // Contact Section
 const ContactSection = () => {
@@ -28,27 +28,18 @@ const ContactSection = () => {
         });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setState(true);
-        emailjs.send(
-            "service_sq3tu3q",
-            "template_18ictaf",
-            {
-                name: formData.name,
-                message: formData.message,
-                email: formData.email,
-                phone: formData.phone
-            },
-            "ZCKANvzqENSf-ja9x" // ⛔ REQUIRED: Replace with your EmailJS User ID or Public Key
-        ).then((response) => {
+    const handleSubmit = async (e) => {
+        try {
+            e.preventDefault();
+            setState(true);
+            sendContactEmail(formData);
             toast.success('Thank you for your inquiry! We will get back to you soon.');
             setFormData({ name: '', phone: '', email: '', message: '' });
-            setState(false);
-        }).catch((err) => {
+        } catch (error) {
             toast.error('Failed to submit form. Please try again later.');
+        } finally {
             setState(false);
-        });
+        }
     };
 
     return (

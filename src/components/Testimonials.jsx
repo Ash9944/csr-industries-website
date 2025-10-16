@@ -4,31 +4,37 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { testimonials as testimonialJson, dummyReviews } from "../../websiteProducts.json";
 import axios from 'axios';
 import WaterRippleLoader from './WaterRippleLoader';
+import { fetchGoogleReviews } from '../httpRequests';
 
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
-  const PLACE_ID = import.meta.env.VITE_GOOGLE_PLACE_ID;
-
   useEffect(() => {
     async function fetchReviews() {
       try {
-        const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=name,rating,reviews,user_ratings_total&key=${GOOGLE_API_KEY}`;
-        const { data } = await axios.get(url);
+        const cached = localStorage.getItem("google_reviews");
+        const cacheTime = localStorage.getItem("google_reviews_time");
+        const oneWeek = 7 * 24 * 60 * 60 * 1000;
+        const isCacheValid = cached && cacheTime && Date.now() - cacheTime < oneWeek;
+        if (isCacheValid) {
+          setTestimonials(JSON.parse(cached));
+          return;
+        }
 
-        const reviews =
-          data.result?.reviews?.map((r) => ({
-            id: r.time,
-            description: r.text || dummyReviews[Math.floor(Math.random() * dummyReviews.length)],
-            author: capitalizeFirstLetter(r.author_name),
-            rating: r.rating,
-            avatar: r.profile_photo_url
-          })) || [];
+        const response = await fetchGoogleReviews();
+        const reviews = response.data?.reviews?.map((r) => ({
+          id: r.time,
+          description: r.text || dummyReviews[Math.floor(Math.random() * dummyReviews.length)],
+          author: capitalizeFirstLetter(r.author_name),
+          rating: r.rating,
+          avatar: r.profile_photo_url
+        })) || [];
 
         setTestimonials(reviews);
+        localStorage.setItem("google_reviews", JSON.stringify(reviews));
+        localStorage.setItem("google_reviews_time", Date.now().toString());
       } catch (err) {
         setTestimonials(testimonialJson);
         console.error("Error fetching Google reviews:", err);
