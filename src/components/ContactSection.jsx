@@ -55,7 +55,7 @@ const ContactSection = () => {
                             We're here to help you find the perfect solution.
                         </p>
 
-                        <form onSubmit={handleSubmit} className="space-y-4">
+                        <form id="contactForm" onSubmit={handleSubmit} className="space-y-4">
                             <input
                                 type="text"
                                 name="name"
