@@ -35,6 +35,12 @@ const ContactSection = () => {
             sendContactEmail(formData);
             toast.success('Thank you for your inquiry! We will get back to you soon.');
             setFormData({ name: '', phone: '', email: '', message: '' });
+
+            if (window.gtag) {
+                window.gtag('event', 'conversion', {
+                    send_to: 'AW-16739035749/vvcpCMr1o9AbEOXU5a0-',
+                });
+            }
         } catch (error) {
             toast.error('Failed to submit form. Please try again later.');
         } finally {
