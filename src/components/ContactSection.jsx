@@ -78,8 +78,12 @@ const ContactSection = () => {
                                 value={formData.phone}
                                 onChange={handleInputChange}
                                 required
+                                maxLength={10}
+                                pattern="[6-9]{1}[0-9]{9}"
+                                title="Enter a valid 10-digit Indian mobile number"
                                 className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                             />
+
                             <input
                                 type="email"
                                 name="email"
