@@ -26,17 +26,18 @@ const SEOHead = ({ title, description, keywords }) => {
       document.head.appendChild(meta);
     }
 
-    // Schema.org structured data
+    // Schema.org structured data — LocalBusiness (per SEO brief Task 5)
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.text = JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "LocalBusiness",
       "name": "CSR Industries",
-      "description": "Leading motor pump manufacturers in Coimbatore since 1986. Premium water pump motors, submersible pumps, and industrial pumping solutions.",
-      "url": "https://csrindustries.com",
-      "logo": "https://csrindustries.com/logo.png",
+      "url": "https://www.csrindustries.in",
+      "description": "Water pump manufacturer in Coimbatore specialising in monoblock, submersible and self-priming pumps.",
       "foundingDate": "1986",
+      "telephone": "+91-9047438316",
+      "email": "csrindustries1968@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rajagopal Layout, Krishnarayapuram, Illango Nagar",
@@ -45,17 +46,9 @@ const SEOHead = ({ title, description, keywords }) => {
         "postalCode": "641006",
         "addressCountry": "IN"
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-90474-38316",
-        "contactType": "Customer Service",
-        "email": "csrindustries1968@gmail.com"
-      },
       "sameAs": [
-        "https://facebook.com/csrindustries",
-        "https://twitter.com/csrindustries",
-        "https://linkedin.com/company/csrindustries",
-        "https://instagram.com/csrindustries"
+        "https://www.facebook.com/share/1GEg3y2KrW/",
+        "https://www.instagram.com/csr.industries"
       ]
     });
     document.head.appendChild(script);

@@ -40,6 +40,7 @@
   "products": [
     {
       "id": 1,
+      "slug": "self-priming-monoblock-pump",
       "name": "Self Priming Monoblock Pump",
       "image": "imgs/selfPriming.jpeg",
       "description": "boasts a range of impressive features designed to ensure high performance, durability, and efficiency in various applications. Here’s a detailed look at its salient features and specifications:",
@@ -70,6 +71,7 @@
     },
     {
       "id": 2,
+      "slug": "openwell-submersible-pump",
       "name": "Openwell Submersible Pump",
       "image": "imgs/openwellSubmersible.jpeg",
       "description": "These features collectively enhance the performance, efficiency, and longevity of the Openwell Submersible Pumps, making them a robust choice for various water management needs.",
@@ -100,6 +102,7 @@
     },
     {
       "id": 3,
+      "slug": "dms-slow-speed-pump",
       "name": "DMS Slow Speed Pump",
       "image": "imgs/DMSSlowSpeed.jpeg",
       "description": " by CSR Industries boasts several advanced features and benefits, making it a standout choice for domestic water pumping needs. Here’s a detailed overview.",
@@ -130,6 +133,7 @@
     },
     {
       "id": 4,
+      "slug": "v-type-self-priming-pump",
       "name": "V-Type Self Priming Pump",
       "description": "boasts a range of impressive features designed to ensure high performance, durability, and efficiency in various applications. Here’s a detailed look at its salient features:",
       "image": "imgs/VtypePump.jpeg",
@@ -160,6 +164,7 @@
     },
     {
       "id": 5,
+      "slug": "centrifugal-monoblock-pump",
       "name": "Centrifugal Monoblock Pump",
       "description": "by CSR Industries boasts several advanced features and benefits, making it a standout choice for domestic water pumping needs. Here’s a detailed overview.",
       "image": "imgs/centrifugal.jpeg",
@@ -190,6 +195,7 @@
     },
     {
       "id": 6,
+      "slug": "borewell-submersible-pump",
       "name": "Borewell Submersible Pump",
       "description": "Head depends on the bore drilled underground. current consumed for each horsepower is given below. flow rate depends on the bore diameter and the water level in the bore.",
       "image": "imgs/borewellSubmersible.jpeg",

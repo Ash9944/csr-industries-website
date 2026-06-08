@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 // Header Component
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,30 +18,38 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
     setIsMenuOpen(false);
+    if (location.pathname === '/') {
+      // Already on home — just scroll
+      const element = document.getElementById(sectionId);
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // On a sub-page — navigate home then scroll after render
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
   };
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <button onClick={() => scrollToSection('home')} className="flex items-center space-x-2">
             <div className="w-15 h-12 rounded-lg overflow-hidden">
               <img
-                src="imgs/CC_20240708_002104.png"
+                src="/imgs/CC_20240708_002104.png"
                 alt="CSR Industries Logo"
                 className="w-full h-full object-contain"
               />
             </div>
-            <div>
+            <div className="text-left">
               <h1 className="text-white text-xl font-bold">CSR Industries</h1>
               <p className="text-blue-400 text-xs">Since 1986</p>
             </div>
-          </div>
+          </button>
 
           <div className="hidden md:flex items-center space-x-4 text-white">
             <Phone className="w-4 h-4 text-blue-400" />

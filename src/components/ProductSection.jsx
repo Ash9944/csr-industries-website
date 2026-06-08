@@ -1,218 +1,102 @@
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, CheckCircle } from "lucide-react";
-import { useSwipeable } from "react-swipeable";
-import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { products } from "../../websiteProducts.json";
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
+};
+
+const cardVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
+};
+
 const ProductsSection = () => {
-    const [currentProduct, setCurrentProduct] = useState(0);
-    const [direction, setDirection] = useState(0);
-
-    const product = products[currentProduct];
-
-    const nextProduct = () => {
-        setDirection(1);
-        setCurrentProduct((prev) => (prev + 1) % products.length);
-    };
-
-    const prevProduct = () => {
-        setDirection(-1);
-        setCurrentProduct((prev) => (prev - 1 + products.length) % products.length);
-    };
-
-    const handlers = useSwipeable({
-        onSwipedLeft: nextProduct,
-        onSwipedRight: prevProduct,
-        preventDefaultTouchmoveEvent: true,
-        trackMouse: true,
-    });
-
-    const variants = {
-        enter: (direction) => ({
-            x: direction > 0 ? 300 : -300,
-            opacity: 0,
-        }),
-        center: { x: 0, opacity: 1 },
-        exit: (direction) => ({
-            x: direction > 0 ? -300 : 300,
-            opacity: 0,
-        }),
-    };
-
-    const schemaData = {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": product.name,
-        "image": [product.image],
-        "description": product.description || product.features.join(", "),
-        "brand": {
-            "@type": "Brand",
-            "name": "CSR Industries"
-        },
-        "offers": {
-            "@type": "Offer",
-            "url": typeof window !== 'undefined' ? window.location.href : '',
-            "priceCurrency": "INR",
-            "price": product.price ?? "0",
-            "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition"
-        },
-        "aggregateRating": {
-            "@type": "aggregateRating",
-            "ratingValue": "5",
-            "reviewCount": "1000"
-        }
-    };
-
     return (
-        <section id="products" className="py-20 bg-gradient-to-br from-gray-800 to-gray-900">
-            <Helmet>
-                <script type="application/ld+json">
-                    {JSON.stringify(schemaData)}
-                </script>
-                <title>{`${product.name} | CSR Industries`}</title>
-                <meta
-                    name="description"
-                    content={`Explore ${product.name} — ${product.description || product.features.join(", ")}`}
-                />
-            </Helmet>
+        <section
+            id="products"
+            className="py-24 relative overflow-hidden"
+            style={{ background: 'linear-gradient(180deg, #0a0f1e 0%, #0d1b2a 50%, #0a0f1e 100%)' }}
+        >
+            {/* Background glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/8 rounded-full filter blur-[140px] pointer-events-none" />
 
-            <div className="container mx-auto px-4" {...handlers}>
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            <div className="container mx-auto px-4 relative z-10">
+                {/* Heading */}
+                <div className="text-center mb-14">
+                    <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1.5 text-sm text-blue-300 mb-4">
+                        Premium Quality Pumps
+                    </div>
+                    <h2 className="text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
                         Our{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-red-400">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
                             Products
                         </span>
                     </h2>
-                    <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                        Discover our comprehensive range of high-quality pumps designed for various applications
+                    <p className="text-gray-400 text-lg max-w-xl mx-auto">
+                        Six pump lines engineered for domestic, agricultural, and industrial use
                     </p>
                 </div>
 
-                <div className="relative max-w-6xl mx-auto">
-                    <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-sm border border-gray-600/30">
-                        <AnimatePresence mode="wait" custom={direction}>
-                            <motion.div
-                                key={currentProduct}
-                                custom={direction}
-                                variants={variants}
-                                initial="enter"
-                                animate="center"
-                                exit="exit"
-                                transition={{ duration: 0.4 }}
-                                className="grid lg:grid-cols-2 gap-8 p-8"
-                            >
-                                <div className="relative">
-                                    <div className="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                {/* Grid */}
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto"
+                >
+                    {products.map((product) => {
+                        const models = product.specifications?.models;
+                        const hpLabel = models?.join(' · ');
+
+                        return (
+                            <motion.div key={product.id} variants={cardVariants}>
+                                <Link
+                                    to={`/products/${product.slug}`}
+                                    className="group block rounded-2xl border border-white/8 hover:border-blue-500/40 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10"
+                                    style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)' }}
+                                >
+                                    {/* Image */}
+                                    <div className="relative aspect-[4/3] overflow-hidden">
                                         <img
-                                            src={product.image}
-                                            alt={`${product.name} - CSR Industries Premium Quality`}
-                                            className="w-full h-full object-cover"
+                                            src={`/${product.image}`}
+                                            alt={`${product.name} - CSR Industries`}
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                         />
-                                    </div>
-                                </div>
-
-                                <div className="text-white">
-                                    <h3 className="text-3xl font-bold">{product.name}</h3>
-                                    {product.description && (
-                                        <p className="text-gray-300 text-md leading-relaxed mb-5">
-                                            {product.description}
-                                        </p>
-                                    )}
-
-                                    {product.specifications && Object.keys(product.specifications).length > 0 && (
-                                        <div className="bg-gray-800/50 rounded-lg overflow-hidden border border-gray-600/30 mb-5">
-                                            <table className="w-full text-center">
-                                                <thead>
-                                                    <tr className="bg-gray-700/50 border-b border-gray-600/30">
-                                                        <th className="px-4 py-3 text-left font-semibold text-gray-300">
-                                                            RANGE
-                                                        </th>
-                                                        {
-                                                            product.specifications.models && product.specifications.models.map((model, index) => (
-                                                                <th key={index} className="px-4 py-3 font-semibold text-gray-200">
-                                                                    {model}
-                                                                </th>
-                                                            ))
-                                                        }
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {
-                                                        product.specifications.specs && product.specifications.specs.map((spec, index) => (
-                                                            <tr key={index} className={index % 2 === 0 ? "bg-gray-700/30" : ""}>
-                                                                <td className="px-4 py-3 text-left font-semibold text-gray-300 border-r border-gray-600/30">
-                                                                    {spec.label}
-                                                                </td>
-                                                                {
-                                                                    spec.values.map((value, vIndex) => (
-                                                                        <td key={vIndex} className="px-4 py-3 text-gray-200">
-                                                                            {value}
-                                                                        </td>
-                                                                    ))
-                                                                }
-                                                            </tr>
-                                                        ))
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    )}
-
-                                    {
-                                        product.features && product.features.length > 0 && (
-                                            <div className="space-y-2">
-                                                <h4 className="text-xl font-semibold text-gray-200">Key Features</h4>
-                                                {
-                                                    product.features.map((feature, index) => (
-                                                        <div key={index} className="flex items-start space-x-3">
-                                                            <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                                                            <span className="text-lg text-gray-200">{feature}</span>
-                                                        </div>
-                                                    ))
-                                                }
+                                        {/* Gradient overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/20 to-transparent" />
+                                        {/* HP badge */}
+                                        {hpLabel && (
+                                            <div className="absolute top-3 right-3 bg-blue-500/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-lg border border-blue-400/30">
+                                                {hpLabel}
                                             </div>
-                                        )
-                                    }
-                                </div>
+                                        )}
+                                    </div>
+
+                                    {/* Card body */}
+                                    <div className="p-5">
+                                        <h3 className="text-white font-bold text-lg leading-snug mb-3 group-hover:text-blue-200 transition-colors">
+                                            {product.name}
+                                        </h3>
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-xs text-gray-500 uppercase tracking-wider">CSR Industries</span>
+                                            <span className="inline-flex items-center gap-1.5 text-blue-400 text-sm font-semibold group-hover:gap-2.5 transition-all duration-200">
+                                                View Details
+                                                <ArrowRight className="w-4 h-4" />
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Bottom accent line */}
+                                    <div className="h-px bg-gradient-to-r from-transparent via-blue-500/0 group-hover:via-blue-500/50 to-transparent transition-all duration-500" />
+                                </Link>
                             </motion.div>
-                        </AnimatePresence>
-                    </div>
-
-                    <button
-                        onClick={prevProduct}
-                        aria-label="Previous product"
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-700/80 hover:bg-gray-600 text-white p-3 rounded-full transition-all duration-300 shadow-lg"
-                    >
-                        <ChevronLeft className="w-6 h-6" />
-                    </button>
-                    <button
-                        onClick={nextProduct}
-                        aria-label="Next product"
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-700/80 hover:bg-gray-600 text-white p-3 rounded-full transition-all duration-300 shadow-lg"
-                    >
-                        <ChevronRight className="w-6 h-6" />
-                    </button>
-
-                    <div className="flex justify-center space-x-2 mt-8">
-                        {products.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => {
-                                    if (index !== currentProduct) {
-                                        setDirection(index > currentProduct ? 1 : -1);
-                                        setCurrentProduct(index);
-                                    }
-                                }}
-                                aria-label={`Go to product ${index + 1}`}
-                                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentProduct ? "bg-blue-500 w-8" : "bg-gray-600"
-                                    }`}
-                            />
-                        ))}
-                    </div>
-                </div>
+                        );
+                    })}
+                </motion.div>
             </div>
         </section>
     );

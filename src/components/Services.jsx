@@ -62,18 +62,25 @@ const ServicesSection = () => {
     };
 
     return (
-        <section id="services" className="py-20 bg-gray-900">
-            <div className="container mx-auto px-4">
+        <section id="services" className="py-24 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0a0f1e 0%, #0d1b2a 100%)' }}>
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-blue-600/10 rounded-full filter blur-[100px]"></div>
+                <div className="absolute top-0 right-1/4 w-64 h-64 bg-cyan-500/10 rounded-full filter blur-[80px]"></div>
+            </div>
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
+                    <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1.5 text-sm text-blue-300 mb-4">
+                        Full Service Support
+                    </div>
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-4xl lg:text-5xl font-bold text-white mb-4"
+                        className="text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight"
                     >
                         Our{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-red-400">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
                             Services
                         </span>
                     </motion.h2>
@@ -82,7 +89,7 @@ const ServicesSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-gray-300 text-lg max-w-2xl mx-auto"
+                        className="text-gray-400 text-lg max-w-2xl mx-auto"
                     >
                         Comprehensive support and maintenance services for all your pump needs
                     </motion.p>
@@ -93,7 +100,7 @@ const ServicesSection = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl mx-auto"
                 >
                     {services.map((service, index) => {
                         const Icon = service.icon;
@@ -101,29 +108,29 @@ const ServicesSection = () => {
                             <motion.div
                                 key={index}
                                 variants={itemVariants}
-                                whileHover={{
-                                    scale: 1.05,
-                                    transition: { duration: 0.2 }
-                                }}
-                                className="group relative bg-gradient-to-br from-gray-800/50 to-gray-700/30 backdrop-blur-sm border border-gray-600/30 rounded-2xl p-6 hover:border-blue-400/50 transition-all duration-300 overflow-hidden"
+                                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                                className="group relative rounded-2xl p-6 overflow-hidden cursor-default border border-white/5 hover:border-blue-500/30 transition-all duration-300"
+                                style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)' }}
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 transition-all duration-300" />
+                                {/* Hover glow */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/8 group-hover:to-cyan-500/5 transition-all duration-500 rounded-2xl" />
+                                {/* Top border accent */}
+                                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/0 group-hover:via-blue-500/50 to-transparent transition-all duration-500" />
 
                                 <div className="relative z-10">
-                                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                        <Icon className="w-7 h-7 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
+                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 border border-blue-500/20 group-hover:border-blue-400/40" style={{ background: 'rgba(59,130,246,0.1)' }}>
+                                        <Icon className="w-6 h-6 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
                                     </div>
-
-                                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-200 transition-colors duration-300">
                                         {service.title}
                                     </h3>
-
-                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                    <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-400 transition-colors duration-300">
                                         {service.description}
                                     </p>
                                 </div>
 
-                                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                                {/* Bottom accent line */}
+                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left rounded-b-2xl" />
                             </motion.div>
                         );
                     })}
@@ -138,7 +145,7 @@ const ServicesSection = () => {
                 >
                     <button
                         onClick={() => scrollToSection('contact')}
-                        className="bg-gradient-to-r from-blue-500 to-red-500 hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                        className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/25">
                         Contact Us for Services
                     </button>
                 </motion.div>

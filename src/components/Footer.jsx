@@ -11,7 +11,7 @@ const Footer = () => {
                         <div className="flex items-center space-x-2 mb-4">
                             <div className="w-10 h-10 rounded-lg overflow-hidden">
                                 <img
-                                    src="imgs/CC_20240708_002104.png"
+                                    src="/imgs/CC_20240708_002104.png"
                                     alt="CSR Industries Logo"
                                     className="w-full h-full object-contain"
                                 />
