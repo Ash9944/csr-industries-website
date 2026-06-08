@@ -51,24 +51,24 @@ const StatsSection = () => {
     return (
         <section
             ref={sectionRef}
-            className="py-20 bg-gradient-to-r from-blue-600 to-red-400"
+            className="py-20 relative overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #0369a1 100%)' }}
         >
-            <div className="container mx-auto px-4">
+            <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                     {stats.map((stat, index) => (
                         <div key={index} className="text-center text-white">
-                            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                {stat.icon === 'Award' && <Award className="w-8 h-8" />}
-                                {stat.icon === 'Users' && <Users className="w-8 h-8" />}
-                                {stat.icon === 'LandPlot' && <LandPlot className="w-8 h-8" />}
-                                {stat.icon === 'Star' && <Star className="w-8 h-8" />}
+                            <div className="w-16 h-16 bg-white/15 border border-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                {stat.icon === 'Award' && <Award className="w-7 h-7" />}
+                                {stat.icon === 'Users' && <Users className="w-7 h-7" />}
+                                {stat.icon === 'LandPlot' && <LandPlot className="w-7 h-7" />}
+                                {stat.icon === 'Star' && <Star className="w-7 h-7" />}
                             </div>
-
-                            {/* Animated Number with + */}
-                            <h3 className="text-4xl font-bold mb-2">
+                            <h3 className="text-4xl font-black mb-1 tracking-tight">
                                 <AnimatedNumber value={stat.value} startAnimation={startAnimation} />
                             </h3>
-                            <p className="text-lg opacity-90">{stat.label}</p>
+                            <p className="text-sm text-blue-100 font-medium uppercase tracking-wider">{stat.label}</p>
                         </div>
                     ))}
                 </div>

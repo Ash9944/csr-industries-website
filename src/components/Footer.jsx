@@ -4,7 +4,7 @@ import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 // Footer Component
 const Footer = () => {
     return (
-        <footer className="bg-gray-900 border-t border-gray-800 py-12">
+        <footer className="border-t border-white/8 py-12" style={{ background: '#080d18' }}>
             <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-3 gap-8 mb-8">
                     <div className="text-white">
@@ -21,7 +21,7 @@ const Footer = () => {
                                 <p className="text-blue-400 text-sm">Since 1986</p>
                             </div>
                         </div>
-                        <p className="text-gray-300">
+                        <p className="text-gray-400 text-sm">
                             Leading motor pump manufacturers in Coimbatore, delivering quality and performance since 1986.
                         </p>
                     </div>
@@ -29,10 +29,10 @@ const Footer = () => {
                     <div className="text-white">
                         <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
                         <ul className="space-y-2 text-gray-300">
-                            <li><a href="#home" className="hover:text-blue-400 transition-colors">Home</a></li>
-                            <li><a href="#products" className="hover:text-blue-400 transition-colors">Products</a></li>
-                            <li><a href="#about" className="hover:text-blue-400 transition-colors">About Us</a></li>
-                            <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
+                            <li><a href="#home" className="text-gray-400 hover:text-blue-400 transition-colors text-sm">Home</a></li>
+                            <li><a href="#products" className="text-gray-400 hover:text-blue-400 transition-colors text-sm">Products</a></li>
+                            <li><a href="#about" className="text-gray-400 hover:text-blue-400 transition-colors text-sm">About Us</a></li>
+                            <li><a href="#contact" className="text-gray-400 hover:text-blue-400 transition-colors text-sm">Contact</a></li>
                         </ul>
                     </div>
 
@@ -47,23 +47,17 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-gray-800 pt-8 text-center">
+                <div className="border-t border-white/8 pt-8 text-center">
                     <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <p className="text-gray-400">
                             © {new Date().getFullYear()} CSR Industries. All rights reserved.
                         </p>
                         <div className="flex space-x-4">
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/share/1GEg3y2KrW/" className="text-gray-400 hover:text-blue-400 transition-colors">
-                                <Facebook className="w-5 h-5" />
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/share/1GEg3y2KrW/" className="w-9 h-9 rounded-lg border border-white/10 hover:border-blue-500/40 flex items-center justify-center text-gray-500 hover:text-blue-400 transition-all duration-200" style={{ background: 'rgba(255,255,255,0.04)' }}>
+                                <Facebook className="w-4 h-4" />
                             </a>
-                            {/* <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                                <Twitter className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                                <Linkedin className="w-5 h-5" />
-                            </a> */}
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/csr.industries?igsh=MXZ2Ymtrd3RleDR2OQ==" className="text-gray-400 hover:text-blue-400 transition-colors">
-                                <Instagram className="w-5 h-5" />
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/csr.industries?igsh=MXZ2Ymtrd3RleDR2OQ==" className="w-9 h-9 rounded-lg border border-white/10 hover:border-blue-500/40 flex items-center justify-center text-gray-500 hover:text-blue-400 transition-all duration-200" style={{ background: 'rgba(255,255,255,0.04)' }}>
+                                <Instagram className="w-4 h-4" />
                             </a>
                         </div>
                     </div>

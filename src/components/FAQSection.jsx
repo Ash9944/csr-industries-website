@@ -1,141 +1,146 @@
 import { useState } from 'react';
 import { ChevronDown, Search, Mail } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { motion, AnimatePresence } from 'framer-motion';
 import { faqs } from '../../websiteProducts.json';
 
-export default function ModernFAQSection() {
-    const [expandedFAQ, setExpandedFAQ] = useState(0);
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+    }))
+};
+
+export default function FAQSection() {
+    // Store the question string as the key, not an index — survives filtering
+    const [expandedKey, setExpandedKey] = useState(faqs[0]?.question ?? null);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
+    const scrollToSection = (id) => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const filteredFAQs = faqs.filter(faq =>
+    const filtered = faqs.filter(faq =>
         faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
         faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const toggleFAQ = (index) => {
-        setExpandedFAQ(expandedFAQ === index ? null : index);
-    };
-
-    // 🧠 Build Schema.org JSON-LD structure dynamically
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqs.map(faq => ({
-            "@type": "Question",
-            "name": faq.question,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
-    };
-
     return (
-        <section id="faq" className="min-h-screen bg-gray-900 p-10">
-            {/* ✅ Add structured data to <head> */}
+        <section
+            id="faq"
+            className="py-24 relative overflow-hidden"
+            style={{ background: 'linear-gradient(180deg, #0a0f1e 0%, #0d1b2a 100%)' }}
+        >
             <Helmet>
-                <script type="application/ld+json">
-                    {JSON.stringify(faqSchema)}
-                </script>
-                <meta
-                    name="description"
-                    content="Find answers to common questions about CSR Industries' products, services, and support."
-                />
+                <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+                <meta name="description" content="Find answers to common questions about CSR Industries products, services, and support." />
             </Helmet>
 
-            <div className="max-w-7xl mx-auto">
-                <div className="grid lg:grid-cols-2 gap-8">
-                    {/* Left Column */}
-                    <div className="flex flex-col justify-between">
-                        <div>
-                            <h1 className="text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-                                Frequently asked{' '}
-                                <span className="bg-gradient-to-r from-blue-400 to-red-400 text-transparent bg-clip-text">
-                                    questions
-                                </span>
-                            </h1>
+            <div className="container mx-auto px-4">
+                <div className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
 
-                            {/* Search Bar */}
-                            <div className="relative mb-8">
-                                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                    <Search className="h-5 w-5 text-gray-500" />
-                                </div>
+                    {/* Left */}
+                    <div className="flex flex-col gap-8">
+                        <div>
+                            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1.5 text-sm text-blue-300 mb-5">
+                                Got Questions?
+                            </div>
+                            <h2 className="text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-6">
+                                Frequently{' '}
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+                                    asked questions
+                                </span>
+                            </h2>
+                            {/* Search */}
+                            <div className="relative">
+                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 pointer-events-none" />
                                 <input
                                     type="text"
                                     placeholder="Search questions..."
                                     value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="w-full pl-12 pr-4 py-4 bg-gray-800/80 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-all duration-300"
+                                    onChange={e => { setSearchTerm(e.target.value); setExpandedKey(null); }}
+                                    className="w-full pl-11 pr-4 py-3.5 rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none transition-all duration-200"
+                                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
                                 />
                             </div>
                         </div>
 
-                        {/* Contact Card */}
-                        <div className="bg-gray-800/60 border border-gray-700/40 rounded-2xl p-8">
-                            <h3 className="text-xl font-semibold text-white mb-3">
-                                Still have a question?
-                            </h3>
-                            <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-                                Can’t find the answer to your question? Send us an email and we’ll get back to you as soon as possible.
+                        {/* Still have a question card */}
+                        <div
+                            className="rounded-2xl p-7 border border-white/10 mt-auto"
+                            style={{ background: 'rgba(255,255,255,0.03)' }}
+                        >
+                            <h3 className="text-lg font-bold text-white mb-2">Still have a question?</h3>
+                            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+                                Can't find the answer? Send us a message and we'll get back to you shortly.
                             </p>
                             <button
                                 onClick={() => scrollToSection('contact')}
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-red-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-blue-500/20"
                             >
                                 <Mail className="w-4 h-4" />
-                                Send email
+                                Contact Us
                             </button>
                         </div>
                     </div>
 
-                    {/* Right Column - FAQ List */}
-                    <div className="space-y-3">
-                        {filteredFAQs.length > 0 ? (
-                            filteredFAQs.map((faq, index) => (
+                    {/* Right — FAQ list */}
+                    <div className="space-y-2">
+                        {filtered.length > 0 ? filtered.map(faq => {
+                            const isOpen = expandedKey === faq.question;
+                            return (
                                 <div
-                                    key={index}
-                                    className={`bg-gray-800/60 border border-gray-700/40 rounded-xl overflow-hidden transition-all duration-300 ${expandedFAQ === index ? 'ring-1 ring-blue-500/30' : ''
-                                        }`}
+                                    key={faq.question}
+                                    className="rounded-xl overflow-hidden transition-colors duration-200"
+                                    style={{
+                                        border: isOpen ? '1px solid rgba(59,130,246,0.35)' : '1px solid rgba(255,255,255,0.08)',
+                                        background: 'rgba(255,255,255,0.03)',
+                                    }}
                                 >
                                     <button
-                                        onClick={() => toggleFAQ(index)}
-                                        className="w-full px-6 py-5 text-left flex items-center justify-between group focus:outline-none"
+                                        onClick={() => setExpandedKey(isOpen ? null : faq.question)}
+                                        className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 focus:outline-none group"
                                     >
-                                        <h3 className="font-medium pr-4 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-red-400 duration-200">
+                                        <span className={`text-sm font-medium transition-colors duration-200 ${isOpen ? 'text-blue-300' : 'text-white group-hover:text-blue-300'}`}>
                                             {faq.question}
-                                        </h3>
-                                        <div className="flex-shrink-0">
-                                            <div
-                                                className={`w-6 h-6 flex items-center justify-center transform transition-transform duration-300 ${expandedFAQ === index ? 'rotate-180' : ''
-                                                    }`}
-                                            >
-                                                <ChevronDown className={`w-4 h-4 ${expandedFAQ === index ? 'text-blue-400' : 'text-gray-400 group-hover:text-blue-400'} transition-colors duration-200`} />
-                                            </div>
-                                        </div>
+                                        </span>
+                                        <ChevronDown
+                                            className={`w-4 h-4 flex-shrink-0 transition-all duration-300 ${isOpen ? 'rotate-180 text-blue-400' : 'text-gray-500 group-hover:text-blue-400'}`}
+                                        />
                                     </button>
 
-                                    {expandedFAQ === index && (
-                                        <div className="px-6 pb-5">
-                                            <div className="h-px bg-gray-700/50 mb-4"></div>
-                                            <p className="text-gray-300 text-sm leading-relaxed">
-                                                {faq.answer}
-                                            </p>
-                                        </div>
-                                    )}
+                                    <AnimatePresence initial={false}>
+                                        {isOpen && (
+                                            <motion.div
+                                                key="answer"
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.25 }}
+                                                style={{ overflow: 'hidden' }}
+                                            >
+                                                <div className="px-5 pb-4 pt-1">
+                                                    <div className="h-px mb-3" style={{ background: 'rgba(255,255,255,0.08)' }} />
+                                                    <p className="text-gray-400 text-sm leading-relaxed">{faq.answer}</p>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
-                            ))
-                        ) : (
-                            <div className="text-center py-12">
-                                <div className="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <Search className="w-6 h-6 text-gray-400" />
+                            );
+                        }) : (
+                            <div className="text-center py-16">
+                                <div
+                                    className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
+                                    style={{ background: 'rgba(255,255,255,0.05)' }}
+                                >
+                                    <Search className="w-5 h-5 text-gray-400" />
                                 </div>
-                                <h3 className="text-lg font-medium text-white mb-2">No questions found</h3>
-                                <p className="text-gray-400">Try adjusting your search terms</p>
+                                <p className="text-white font-medium mb-1">No results found</p>
+                                <p className="text-gray-500 text-sm">Try different keywords</p>
                             </div>
                         )}
                     </div>
