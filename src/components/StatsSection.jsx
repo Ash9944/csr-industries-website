@@ -24,7 +24,7 @@ const AnimatedNumber = ({ value, duration = 1500, startAnimation }) => {
         requestAnimationFrame(animate);
     }, [value, duration, startAnimation]);
 
-    return <span>{count.toLocaleString()}+</span>;
+    return <span>{count.toLocaleString()} +</span>;
 };
 
 // Stats Section
