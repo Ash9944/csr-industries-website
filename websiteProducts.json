@@ -241,7 +241,7 @@
   ],
   "stats": [
     { "icon": "Award", "value": "10000", "label": "Units Delivered" },
-    { "icon": "Users", "value": "95000", "label": "Happy Customers" },
+    { "icon": "Users", "value": "9500", "label": "Happy Customers" },
     { "icon": "LandPlot", "value": "100", "label": "Locations Delivered" },
     { "icon": "Star", "value": "38", "label": "Years Experience" }
   ],
