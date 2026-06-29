@@ -42,7 +42,7 @@ const HeroSection = () => {
               {[
                 { icon: Zap, text: 'High Efficiency' },
                 { icon: Shield, text: 'Quality Guaranteed' },
-                { icon: Award, text: 'ISO Certified' },
+                { icon: Award, text: 'Zed Bronze Certified' },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-gray-300">
                   <Icon className="w-4 h-4 text-blue-400" />
